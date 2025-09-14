@@ -1,0 +1,25 @@
+name: Auto PR dev→main
+
+on:
+  push:
+    branches: [dev]
+  schedule:
+    - cron: '0 9 * * *' # 16:00 GMT+7 hằng ngày
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create PR dev→main if not exists
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: dev
+          destination_branch: main
+          pr_title: 'chore: auto PR dev→main'
+          pr_body: 'Tự động tạo PR từ dev sang main khi có commit mới hoặc theo lịch cron.'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_allow_empty: false
+          pr_draft: false
+          pr_reviewer: ''
