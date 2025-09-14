@@ -183,3 +183,11 @@
 - 14/09/2025 16:56:10 — Deploy to GitHub Pages: SUCCESS (workflow "Deploy to GitHub Pages" trên nhánh main hoàn tất).
 - 14/09/2025 17:00:57 — Cập nhật nội dung các trang Home/About/Services/Contact/Careers (UI cơ bản) và thêm badges CI/Pages vào README.
 - 14/09/2025 17:10:36 — Mở PR #6 (dev→main), sửa test hỏng do thay đổi copy Home, CI xanh, merge và deploy Pages: SUCCESS.
+
+---
+
+### 🚦 CI/CD Auto-Review
+
+- Khi có PR, workflow CI sẽ tự động build, test, chạy Lighthouse (lhci) và kiểm tra accessibility (axe-core) trên bản preview.
+- Kết quả Lighthouse và a11y sẽ được upload artifact và sticky comment vào PR, kèm link preview Pages.
+- Giúp reviewer kiểm tra nhanh chất lượng UI/UX, hiệu năng, accessibility trước khi merge.
