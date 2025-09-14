@@ -95,13 +95,13 @@
 
 ### Frontend Enhancement
 
-- ⏭️ **Page Content Development**
-  - Home: Hero section, company overview
-  - About: Company history, team info
-  - Services: Logistics services list
-  - Contact: Contact form, company info
-  - Careers: Job listings, application form
-  - Items: Integration with backend API
+- 🟡 **Page Content Development**
+  - Home: Hero section, CTA (done)
+  - About: Company overview (done)
+  - Services: Services grid (done)
+  - Contact: Contact info + form UI (done)
+  - Careers: Openings list UI (done)
+  - Items: Integration with backend API (done)
 
 - ⏭️ **UI/UX Improvements**
   - Professional logistics theme
@@ -164,6 +164,7 @@
 ## 📝 Update Log (GMT+7)
 
 - 14/09/2025 16:32:14 — Backend Express server, Clean Architecture slices, `/items` + `/search` endpoints, Prettier + EditorConfig, ESLint + CI strict lint, Items page fetch UI, nodemon watch added.
+ - 14/09/2025 17:00:57 — Cập nhật nội dung các trang Home/About/Services/Contact/Careers (UI cơ bản), thêm badges CI/Pages vào README.
 
 ---
 
