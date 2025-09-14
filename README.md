@@ -79,13 +79,13 @@ type Item = {
 - Pages deploy (`.github/workflows/pages.yml`): build trên `main` rồi deploy GitHub Pages.
 - Vite có cấu hình `base` để tương thích đường dẫn trên Pages.
 
-## 7) Tự động tạo PR dev→main & auto-merge khi CI xanh
+## 8) Tự động tạo PR dev→main & auto-merge khi CI xanh
 
 - Khi có commit mới lên nhánh `dev` hoặc đến 16:00 GMT+7 mỗi ngày, workflow sẽ tự động tạo Pull Request từ `dev` sang `main` nếu có thay đổi.
 - Khi workflow CI (`ci.yml`) chạy thành công trên PR dev→main, workflow sẽ tự động merge PR này vào `main` (nếu repo bật branch protection với required status check là CI).
 - Không cần thao tác thủ công, chỉ cần commit lên `dev` và đảm bảo CI xanh.
 
-## 8) Liên kết quan trọng
+## 9) Liên kết quan trọng
 
 - Repository: https://github.com/nguyentancrypto-source/iconic-logistics-website
 - Nhánh làm việc: `dev` (PR vào `main`).
@@ -93,7 +93,7 @@ type Item = {
 - GitHub Pages (sau khi merge main và deploy): https://nguyentancrypto-source.github.io/iconic-logistics-website/
   - 404 SPA fallback: `public/404.html` đã cấu hình.
 
-## 9) Cách chạy nhanh (local)
+## 10) Cách chạy nhanh (local)
 
 ```bash
 # Cài đặt phụ thuộc
@@ -111,7 +111,13 @@ curl http://localhost:4000/health
 curl 'http://localhost:4000/items?q=container&page=1&pageSize=2'
 ```
 
-## 10) Trạng thái & Báo cáo
+## 11) Tự động tạo/đồng bộ GitHub Issues từ BACKLOG.md
+
+- Khi cập nhật các dòng `- [ ] ...` trong `BACKLOG.md`, workflow sẽ tự động tạo Issue mới (label: backlog, auto) cho từng task chưa hoàn thành.
+- Nếu rerun workflow hoặc chỉnh sửa, các Issue đã tạo sẽ không bị trùng.
+- Có thể chạy thủ công từ tab Actions (workflow_dispatch).
+
+## 12) Trạng thái & Báo cáo
 
 - Backlog: xem `BACKLOG.md` (có log cập nhật theo GMT+7).
 - Báo cáo tiến độ: `REPORT_SUMMARY.md` (cập nhật mới nhất, có Update Log).
