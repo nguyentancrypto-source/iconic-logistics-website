@@ -16,7 +16,9 @@
     "test": "vitest run",
     "test:ui": "vitest",
     "coverage": "vitest run --coverage",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lhci:ci": "lhci autorun --collect.url=http://localhost:4173 --upload.target=filesystem --upload.outputDir=./lhci-report || echo 'LHCI done'",
+    "axe:ci": "axe http://localhost:4173 --save ./axe-report.json || echo 'axe done'"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -27,7 +29,9 @@
     "react-router-dom": "^7.9.1"
   },
   "devDependencies": {
+    "@axe-core/cli": "^4.10.2",
     "@eslint/js": "^9.33.0",
+    "@lhci/cli": "^0.15.1",
     "@tailwindcss/postcss": "^4.1.13",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",

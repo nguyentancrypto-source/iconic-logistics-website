@@ -23,3 +23,43 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build
+
+      # Start preview server in background
+      - name: Start preview server
+        run: npm run preview &
+      - name: Wait for preview
+        run: npx wait-on http://localhost:4173
+
+      # Run Lighthouse CI
+      - name: Run Lighthouse CI
+        run: npm run lhci:ci
+      - name: Upload LHCI report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lhci-report
+          path: lhci-report
+
+      # Run axe-core a11y
+      - name: Run axe-core a11y
+        run: npm run axe:ci
+      - name: Upload axe report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: axe-report
+          path: axe-report.json
+
+      # Sticky comment to PR with preview, Lighthouse, a11y
+      - name: Comment PR with Preview, Lighthouse, a11y
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          header: auto-review
+          message: |
+            🚀 **Preview:** [GitHub Pages Preview](https://nguyentancrypto-source.github.io/iconic-logistics-website/)
+            
+            🟢 **Lighthouse:**
+            - Xem chi tiết artifact [lhci-report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            
+            ♿ **A11y (axe):**
+            - Xem chi tiết artifact [axe-report.json](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
