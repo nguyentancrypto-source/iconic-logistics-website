@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './interface/Home';
 import About from './interface/About';
@@ -30,4 +29,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
