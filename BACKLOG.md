@@ -135,12 +135,37 @@
 
 #### ⏭️ UI/UX Improvements
 
-- [ ] Thiết kế theme logistics chuyên nghiệp (màu sắc, font, icon)
-- [ ] Chuẩn hóa component library (Button, Card, Modal, Table...)
-- [ ] Loading state cho từng trang (skeleton/loading spinner)
-- [ ] Error state rõ ràng, thân thiện (mất kết nối, không tìm thấy dữ liệu...)
+- [ ] Thiết kế theme logistics chuyên nghiệp
+  - [ ] Sử dụng màu sắc: Primary #FF4500, Secondary #FE4B00, Accent #FFD2BF, Neutral #333, Background #f9f9f9
+  - [ ] Áp dụng icon, hình ảnh thực tế ngành logistics
+  - **Acceptance:** Giao diện đồng bộ màu sắc, nhận diện thương hiệu logistics
+
+- [ ] Cập nhật font chuyên nghiệp toàn site
+  - [ ] Sử dụng Google Fonts: Inter hoặc Roboto cho heading/body
+  - [ ] Heading đậm, body dễ đọc, spacing hợp lý
+  - **Acceptance:** Font đồng bộ, dễ đọc trên mọi thiết bị
+
+- [ ] Chuẩn hóa component library (Button, Card, Modal, Table)
+  - [ ] Tạo các component UI chuẩn với Tailwind, props linh hoạt
+  - [ ] Áp dụng vào Home, Services, Items, Modal
+  - **Acceptance:** Component tái sử dụng, style đồng bộ, code clean
+
+- [ ] Loading state cho từng trang
+  - [ ] Thêm skeleton/loading spinner cho các trang fetch dữ liệu hoặc chuyển trang
+  - **Acceptance:** Có hiệu ứng loading rõ ràng, UX mượt mà
+
+- [ ] Error state rõ ràng, thân thiện
+  - [ ] Hiển thị thông báo lỗi đẹp, dễ hiểu khi mất kết nối, không có dữ liệu, hoặc lỗi API
+  - [ ] Có thể dùng component ErrorBoundary toàn app
+  - **Acceptance:** Người dùng dễ nhận biết lỗi, không bị "trắng trang"
+
 - [ ] Responsive: tối ưu mobile/tablet/desktop
+  - [ ] Kiểm tra và chỉnh sửa layout, font, padding, grid... để giao diện đẹp trên mọi thiết bị
+  - **Acceptance:** Giao diện không vỡ layout, dễ dùng trên mọi màn hình
+
 - [ ] Thêm animation chuyển trang, hover, focus
+  - [ ] Bổ sung hiệu ứng chuyển trang, hover, focus cho button, card, link... (Tailwind transition, animation hoặc Framer Motion)
+  - **Acceptance:** UI sống động, hiện đại, không gây khó chịu
 
 #### ⏭️ API Integration
 
@@ -166,16 +191,18 @@
   - E2E tests with Playwright
   - Coverage reporting improvement
 
----
 
-## ⏭️ TODO - LOW PRIORITY
+- [ ] Thêm trang chi tiết hàng hóa (Item Detail)
+  - [ ] Khi bấm “Xem chi tiết” sẽ chuyển sang trang /items/:id
+  - [ ] Hiển thị đầy đủ thông tin: tên, mã, loại, mô tả, trạng thái, hình ảnh (nếu có)
+  - [ ] Nút quay lại danh sách, hoặc CTA liên hệ tư vấn
+  - **Acceptance:** Điều hướng đúng, hiển thị đủ thông tin, UX thân thiện
 
-### Performance & SEO
-
-- ⏭️ **Performance Optimization**
-  - Code splitting
-  - Image optimization
-  - Bundle size analysis
+- [ ] Bổ sung nội dung thực tế, hình ảnh minh họa, call-to-action rõ ràng
+  - [ ] Viết lại nội dung các trang cho sát thực tế ngành logistics Việt Nam
+  - [ ] Sử dụng hình ảnh thực tế (ảnh kho, xe tải, nhân viên, bản đồ...)
+  - [ ] Đặt các nút CTA nổi bật ở vị trí hợp lý (đầu trang, cuối trang, giữa section)
+  - **Acceptance:** Nội dung thực tế, hình ảnh minh họa rõ ràng, CTA nổi bật
   - Lighthouse score optimization
 
 - ⏭️ **SEO & Meta**
