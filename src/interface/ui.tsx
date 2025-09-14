@@ -5,6 +5,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'accent' | 'outline' | 'danger';
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  size?: 'md' | 'lg';
 };
 
 export function Button({
@@ -15,10 +16,12 @@ export function Button({
   variant = 'primary',
   leftIcon,
   rightIcon,
+  size = 'md',
   ...props
 }: ButtonProps) {
   const base =
-    'inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-logistics transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary hover:scale-105 active:scale-95';
+    'inline-flex items-center gap-2 rounded-xl font-semibold shadow-logistics transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary hover:scale-105 active:scale-95';
+  const sizeClass = size === 'lg' ? 'px-8 py-3 text-lg' : 'px-4 py-2 text-base';
   const variants: Record<string, string> = {
     primary: 'bg-primary text-white hover:bg-primary-light',
     accent: 'bg-accent text-white hover:bg-accent-light',
@@ -27,7 +30,7 @@ export function Button({
   };
   return (
     <button
-      className={`${base} ${variants[variant]} ${loading ? 'opacity-60 cursor-wait' : ''} ${className}`}
+      className={`${base} ${sizeClass} ${variants[variant]} ${loading ? 'opacity-60 cursor-wait' : ''} ${className}`}
       disabled={disabled || loading}
       {...props}
     >

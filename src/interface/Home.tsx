@@ -7,36 +7,36 @@ export default function Home() {
   const [modal, setModal] = useState(false);
   const [loading, setLoading] = useState(false);
   return (
-    <div className="p-4 md:p-8 bg-gradient-to-br from-blue-50 to-orange-50 min-h-[80vh]">
+    <div className="p-4 md:p-8 min-h-[80vh] bg-gradient-to-br from-primary-light via-accent to-background-DEFAULT">
       <section className="max-w-5xl mx-auto text-center space-y-8">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-blue-800 drop-shadow-sm animate-fadein">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-primary drop-shadow-sm animate-fadein tracking-tight">
           Nâng Tầm Chuỗi Cung Ứng Việt Nam
         </h1>
-        <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
-          Iconic Logistics cung cấp giải pháp vận chuyển, kho bãi, quản lý đơn hàng và tracking hiện
-          đại, giúp doanh nghiệp tối ưu chi phí, minh bạch quy trình và nâng cao trải nghiệm khách
-          hàng.
+        <p className="text-lg md:text-xl text-neutral-700 max-w-2xl mx-auto font-medium">
+          Iconic Logistics cung cấp giải pháp vận chuyển, kho bãi, quản lý đơn hàng và tracking hiện đại, giúp doanh nghiệp tối ưu chi phí, minh bạch quy trình và nâng cao trải nghiệm khách hàng.
         </p>
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
           <img
             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
             alt="Kho bãi logistics thực tế"
-            className="rounded-xl shadow-lg w-full max-w-xs md:max-w-sm object-cover border-4 border-orange-200 animate-fadein"
+            className="rounded-2xl shadow-logistics w-full max-w-xs md:max-w-sm object-cover border-4 border-accent animate-fadein"
             loading="lazy"
           />
           <img
             src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80"
             alt="Xe tải vận chuyển hàng hóa"
-            className="rounded-xl shadow-lg w-full max-w-xs md:max-w-sm object-cover border-4 border-blue-200 animate-fadein"
+            className="rounded-2xl shadow-logistics w-full max-w-xs md:max-w-sm object-cover border-4 border-primary-light animate-fadein"
             loading="lazy"
           />
         </div>
         <div className="flex flex-col md:flex-row justify-center gap-4 mt-4">
-          <Button variant="primary" onClick={() => setModal(true)} leftIcon={<span>🚀</span>}>
+          <Button variant="primary" size="lg" className="text-lg px-8 py-3 shadow-lg" onClick={() => setModal(true)} leftIcon={<span>🚀</span>}>
             Mở Modal demo
           </Button>
           <Button
             variant="accent"
+            size="lg"
+            className="text-lg px-8 py-3 shadow-lg"
             loading={loading}
             onClick={() => {
               setLoading(true);
@@ -46,10 +46,10 @@ export default function Home() {
           >
             Nút loading
           </Button>
-          <Button variant="outline">
+          <Button variant="outline" size="lg" className="text-lg px-8 py-3 shadow-lg">
             <a href="/services" className="block w-full h-full">Khám phá dịch vụ</a>
           </Button>
-          <Button variant="danger">
+          <Button variant="danger" size="lg" className="text-lg px-8 py-3 shadow-lg">
             <a href="/items" className="block w-full h-full">Xem hàng hóa</a>
           </Button>
         </div>

@@ -29,26 +29,24 @@ const services = [
 
 export default function Services() {
   return (
-    <div className="p-4 md:p-8 max-w-5xl mx-auto">
-      <h1 className="text-3xl md:text-4xl font-extrabold text-orange-600 mb-6 text-center">
-        Dịch vụ nổi bật
-      </h1>
-      <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="p-4 md:p-8 max-w-6xl mx-auto">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-8 text-center tracking-tight">Dịch vụ nổi bật</h1>
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
         {services.map((s) => (
           <Card
             key={s.title}
-            className="flex flex-col items-center text-center gap-3 border-t-4 border-blue-400 hover:scale-105 transition-transform duration-200 animate-fadein"
+            className="flex flex-col items-center text-center gap-3 border-t-4 border-primary hover:scale-105 transition-transform duration-200 animate-fadein bg-white"
           >
             <span className="text-5xl mb-2">{s.icon}</span>
             <img
               src={s.img}
               alt={s.title}
-              className="rounded-lg w-full h-28 object-cover border border-gray-100"
+              className="rounded-xl w-full h-28 object-cover border border-accent"
               loading="lazy"
             />
-            <h2 className="text-lg font-bold text-blue-700">{s.title}</h2>
-            <p className="text-gray-700 text-sm">{s.desc}</p>
-            <Button className="bg-blue-600 text-white hover:bg-blue-700 mt-2">Tìm hiểu thêm</Button>
+            <h2 className="text-lg font-bold text-primary">{s.title}</h2>
+            <p className="text-neutral-700 text-sm font-medium">{s.desc}</p>
+            <Button variant="primary" size="md" className="mt-2">Tìm hiểu thêm</Button>
           </Card>
         ))}
       </div>
