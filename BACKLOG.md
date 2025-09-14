@@ -165,6 +165,7 @@
 
 - 14/09/2025 16:32:14 — Backend Express server, Clean Architecture slices, `/items` + `/search` endpoints, Prettier + EditorConfig, ESLint + CI strict lint, Items page fetch UI, nodemon watch added.
  - 14/09/2025 17:00:57 — Cập nhật nội dung các trang Home/About/Services/Contact/Careers (UI cơ bản), thêm badges CI/Pages vào README.
+ - 14/09/2025 17:10:36 — PR #6 (dev→main) merged, fixed failing test due to Home copy change, CI green, Pages deploy SUCCESS.
 
 ---
 
