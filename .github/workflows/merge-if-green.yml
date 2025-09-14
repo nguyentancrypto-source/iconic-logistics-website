@@ -1,0 +1,27 @@
+name: Auto Merge dev→main PR if CI green
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+
+jobs:
+  merge-pr:
+    if: >-
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto merge PR dev→main if CI green
+        uses: pascalgn/automerge-action@v0.16.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          merge_method: squash
+          title: 'chore: auto-merge dev→main (CI green)'
+          commit_message: 'Auto-merge PR dev→main khi CI xanh.'
+          labels: ''
+          branch: main
+          pull_request: true
+          merge_filter_author: ''
+          merge_filter_branch: dev
