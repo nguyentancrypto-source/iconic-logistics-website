@@ -2,33 +2,6 @@ import { Card, Button } from './ui';
 
 const services = [
   {
-    title: 'Quản lý kho bãi',
-    desc: 'Tồn kho minh bạch, nhập/xuất nhanh chóng, kiểm soát realtime.',
-    icon: '📦',
-    img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    title: 'Vận chuyển',
-    desc: 'Đa kênh, tối ưu lộ trình, chi phí, giao nhận tận nơi toàn quốc.',
-    icon: '🚚',
-    img: 'https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    title: 'Theo dõi đơn hàng',
-    desc: 'Cập nhật trạng thái real-time, thông tin minh bạch, cảnh báo tự động.',
-    icon: '📲',
-    img: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    title: 'Tư vấn & hỗ trợ',
-    desc: 'Đội ngũ chuyên gia logistics sẵn sàng tư vấn 24/7 cho mọi nhu cầu.',
-    icon: '🤝',
-    img: 'https://images.unsplash.com/photo-1515168833906-d2a3b82b302b?auto=format&fit=crop&w=400&q=80',
-  },
-];
-
-const newServices = [
-  {
     title: 'Quản lý kho bãi thông minh',
     desc: 'Kho bãi tự động hóa 50,000m² với WMS hiện đại, barcode/RFID tracking, kiểm soát nhiệt độ cho hàng lạnh.',
     icon: '📦',
@@ -64,29 +37,6 @@ const newServices = [
     pricing: 'Liên hệ để báo giá',
     caseStudy: 'Shopee: Setup fulfillment center từ 0'
   },
-];
-
-const additionalServices = [
-  {
-    title: 'Cross-border Logistics',
-    desc: 'Xuất nhập khẩu hàng hóa qua Trung Quốc, Thái Lan, Cambodia với thủ tục hải quan trọn gói.',
-    icon: '🌏'
-  },
-  {
-    title: 'E-commerce Fulfillment', 
-    desc: 'Dịch vụ kho vận cho Shopee, Lazada, Tiki từ nhận đơn đến giao hàng cuối cùng.',
-    icon: '🛒'
-  },
-  {
-    title: 'Project Logistics',
-    desc: 'Vận chuyển hàng siêu trọng, siêu dài cho ngành xây dựng, năng lượng, mining.',
-    icon: '🏗️'
-  },
-  {
-    title: 'Pharmaceutical Logistics',
-    desc: 'GDP compliance cho dược phẩm với chuỗi lạnh nghiêm ngặt và trace-ability đầy đủ.',
-    icon: '💊'
-  }
 ];
 
 export default function Services() {
@@ -182,130 +132,6 @@ export default function Services() {
         ))}
       </div>
 
-      {/* Additional Services */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold text-center text-primary mb-8">Dịch vụ chuyên biệt</h2>
-        <div className="grid md:grid-cols-4 gap-6">
-          {additionalServices.map((service, index) => (
-            <Card key={index} className="text-center p-6 hover:shadow-xl transition-shadow border-t-4 border-accent">
-              <span className="text-4xl mb-4 block">{service.icon}</span>
-              <h3 className="font-bold text-lg text-primary mb-3">{service.title}</h3>
-              <p className="text-neutral-600 text-sm mb-4">{service.desc}</p>
-              <Button variant="outline" size="sm" className="w-full">
-                <a href="/contact">Tìm hiểu thêm</a>
-              </Button>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      {/* Process Flow */}
-      <Card className="mb-16 p-8 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <h2 className="text-3xl font-bold text-center text-primary mb-8">Quy trình làm việc chuẩn</h2>
-        <div className="grid md:grid-cols-5 gap-6">
-          {[
-            { step: 1, title: "Tư vấn", desc: "Phân tích nhu cầu, đánh giá hiện trạng", icon: "🎯" },
-            { step: 2, title: "Báo giá", desc: "Đề xuất giải pháp, báo giá chi tiết", icon: "💰" },
-            { step: 3, title: "Ký hợp đồng", desc: "Thỏa thuận SLA, ký kết hợp tác", icon: "📋" },
-            { step: 4, title: "Triển khai", desc: "Setup hệ thống, đào tạo nhân viên", icon: "🚀" },
-            { step: 5, title: "Vận hành", desc: "Theo dõi KPIs, tối ưu liên tục", icon: "📊" }
-          ].map((process) => (
-            <div key={process.step} className="text-center">
-              <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4 mx-auto">
-                {process.step}
-              </div>
-              <div className="text-3xl mb-2">{process.icon}</div>
-              <h3 className="font-bold text-primary mb-2">{process.title}</h3>
-              <p className="text-sm text-neutral-600">{process.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      {/* Industries We Serve */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold text-center text-primary mb-8">Ngành nghề phục vụ</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {[
-            { industry: "FMCG", icon: "🥤", companies: "Vinamilk, Nestle" },
-            { industry: "Electronics", icon: "📱", companies: "Samsung, LG" },
-            { industry: "Automotive", icon: "🚗", companies: "Honda, Toyota" },
-            { industry: "Fashion", icon: "👕", companies: "Zara, H&M" },
-            { industry: "Pharma", icon: "💊", companies: "Traphaco, DHG" },
-            { industry: "E-commerce", icon: "📦", companies: "Shopee, Tiki" }
-          ].map((sector, index) => (
-            <Card key={index} className="text-center p-4 hover:shadow-lg transition-shadow">
-              <div className="text-3xl mb-2">{sector.icon}</div>
-              <h3 className="font-semibold text-primary text-sm mb-1">{sector.industry}</h3>
-              <p className="text-xs text-neutral-500">{sector.companies}</p>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      {/* Mid-page CTA */}
-      <Card className="mb-16 bg-gradient-to-r from-primary to-primary-light text-white text-center py-12">
-        <h2 className="text-3xl font-bold mb-4">Bạn cần giải pháp logistics tùy chỉnh?</h2>
-        <p className="text-lg mb-8 opacity-90">
-          Đội ngũ chuyên gia của chúng tôi sẵn sàng thiết kế giải pháp phù hợp với ngành nghề của bạn
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button variant="outline" size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
-            <a href="/contact" className="flex items-center gap-2">
-              📞 Tư vấn miễn phí
-            </a>
-          </Button>
-          <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary px-8 py-4 text-lg font-semibold">
-            <a href="/about" className="flex items-center gap-2">
-              🏢 Về chúng tôi
-            </a>
-          </Button>
-        </div>
-      </Card>
-
-      {/* Testimonials */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold text-center text-primary mb-8">Khách hàng nói gì về dịch vụ</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {[
-            {
-              company: "Vinamilk",
-              person: "Nguyễn Văn Minh - Supply Chain Director",
-              service: "Kho bãi lạnh & Phân phối",
-              content: "Dịch vụ kho lạnh của Iconic rất chuyên nghiệp. Hệ thống WMS giúp chúng tôi theo dõi tồn kho realtime, giảm 30% thời gian xuất nhập kho.",
-              rating: 5,
-              logo: "🥛"
-            },
-            {
-              company: "Samsung Electronics", 
-              person: "Park Ji-hoon - Logistics Manager",
-              service: "Cross-border & Warehouse",
-              content: "Iconic hỗ trợ rất tốt việc nhập khẩu linh kiện từ Hàn Quốc. Thủ tục hải quan nhanh chóng, kho bãi đảm bảo an toàn tuyệt đối.",
-              rating: 5,
-              logo: "📱"
-            }
-          ].map((testimonial, index) => (
-            <Card key={index} className="p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl">{testimonial.logo}</span>
-                <div>
-                  <h3 className="font-bold text-primary text-lg">{testimonial.company}</h3>
-                  <p className="text-sm text-neutral-600">{testimonial.person}</p>
-                  <p className="text-xs text-accent font-semibold">{testimonial.service}</p>
-                </div>
-              </div>
-              <p className="text-neutral-700 italic mb-4">"{testimonial.content}"</p>
-              <div className="flex text-yellow-500 mb-4">
-                {"⭐".repeat(testimonial.rating)}
-              </div>
-              <Button variant="outline" size="sm">
-                <a href="/contact">Tư vấn dịch vụ này</a>
-              </Button>
-            </Card>
-          ))}
-        </div>
-      </div>
-
       {/* Bottom CTA */}
       <Card className="bg-gradient-to-br from-neutral-800 to-neutral-900 text-white text-center py-12">
         <h2 className="text-4xl font-bold mb-4">Sẵn sàng tối ưu logistics cho doanh nghiệp?</h2>
@@ -321,11 +147,6 @@ export default function Services() {
           <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-neutral-800 px-10 py-5 text-xl font-bold">
             <a href="/items" className="flex items-center gap-3">
               📊 Download bảng giá
-            </a>
-          </Button>
-          <Button variant="outline" size="lg" className="border-accent text-accent hover:bg-accent hover:text-white px-10 py-5 text-xl font-bold">
-            <a href="/careers" className="flex items-center gap-3">
-              👥 Tuyển dụng
             </a>
           </Button>
         </div>

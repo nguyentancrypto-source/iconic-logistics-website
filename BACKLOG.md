@@ -128,7 +128,7 @@
   - Hiển thị đầy đủ thông tin: tên, mã, loại, mô tả, trạng thái, hình ảnh (nếu có).
   - Nút quay lại danh sách, hoặc CTA liên hệ tư vấn.
 
-- [ ] Bổ sung nội dung thực tế, hình ảnh minh họa, call-to-action rõ ràng
+- [x] Bổ sung nội dung thực tế, hình ảnh minh họa, call-to-action rõ ràng
   - Viết lại nội dung các trang cho sát thực tế ngành logistics Việt Nam.
   - Sử dụng hình ảnh thực tế (ảnh kho, xe tải, nhân viên, bản đồ...)
   - Đặt các nút CTA nổi bật ở vị trí hợp lý (đầu trang, cuối trang, giữa section).
