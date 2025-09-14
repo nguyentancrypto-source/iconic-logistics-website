@@ -5,16 +5,24 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1e40af', // blue-800
-          light: '#60a5fa',   // blue-400
-          dark: '#1e293b',    // slate-800
+          DEFAULT: '#FF4500', // logistics orange
+          light: '#FE4B00',   // secondary
+          dark: '#333333',    // neutral
+        },
+        secondary: {
+          DEFAULT: '#FE4B00',
         },
         accent: {
-          DEFAULT: '#f59e42', // orange-400
-          light: '#fbbf24',   // orange-300
+          DEFAULT: '#FFD2BF',
+        },
+        neutral: {
+          DEFAULT: '#333333',
+        },
+        background: {
+          DEFAULT: '#f9f9f9',
         },
         logistics: {
-          bg: '#f8fafc',
+          bg: '#f9f9f9',
           card: '#fff7ed',
           border: '#e0e7ef',
         },
