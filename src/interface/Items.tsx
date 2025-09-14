@@ -24,7 +24,7 @@ const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
 export default function Items() {
   const [q, setQ] = useState('');
   const [debouncedQ, setDebouncedQ] = useState('');
-  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [page, setPage] = useState(1);
   const [pageSize] = useState(5);
   const [loading, setLoading] = useState(false);
@@ -46,7 +46,7 @@ export default function Items() {
     setPage(1);
     setData({ items: [], total: 0, page: 1, pageSize });
     setHasMore(true);
-  }, [debouncedQ]);
+  }, [debouncedQ, pageSize]);
 
   const query = useMemo(
     () => new URLSearchParams({ q: debouncedQ, page: String(page), pageSize: String(pageSize) }).toString(),
@@ -86,7 +86,7 @@ export default function Items() {
     return () => {
       cancelled = true;
     };
-  }, [query, page]);
+  }, [query, page, pageSize]);
 
   // Infinite scroll handler
   const handleScroll = useCallback(() => {
