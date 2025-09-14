@@ -178,6 +178,7 @@
 ## 📝 Update Log (GMT+7)
 
 - 14/09/2025 16:32:14 — Backend Express server, in-memory endpoints (`/items`, `/search`), Clean Architecture layers (core/app), Prettier + EditorConfig, ESLint strict in CI, Items page fetch UI, nodemon watch.
- - 14/09/2025 16:52:01 — Mở PR dev→main và merge để kích hoạt triển khai GitHub Pages; cập nhật workflow thêm `actions/configure-pages@v5`.
- - 14/09/2025 16:54:54 — Hoàn tất Phase 2 (Development Environment): đã thêm Prettier + EditorConfig, lint strict trong CI.
- - 14/09/2025 16:56:10 — Deploy to GitHub Pages: SUCCESS (workflow "Deploy to GitHub Pages" trên nhánh main hoàn tất).
+- 14/09/2025 16:52:01 — Mở PR dev→main và merge để kích hoạt triển khai GitHub Pages; cập nhật workflow thêm `actions/configure-pages@v5`.
+- 14/09/2025 16:54:54 — Hoàn tất Phase 2 (Development Environment): đã thêm Prettier + EditorConfig, lint strict trong CI.
+- 14/09/2025 16:56:10 — Deploy to GitHub Pages: SUCCESS (workflow "Deploy to GitHub Pages" trên nhánh main hoàn tất).
+ - 14/09/2025 17:00:57 — Cập nhật nội dung các trang Home/About/Services/Contact/Careers (UI cơ bản) và thêm badges CI/Pages vào README.
