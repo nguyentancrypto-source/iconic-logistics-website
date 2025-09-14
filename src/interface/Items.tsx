@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 type Item = {
@@ -23,17 +23,37 @@ const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
 
 export default function Items() {
   const [q, setQ] = useState('');
+  const [debouncedQ, setDebouncedQ] = useState('');
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
   const [page, setPage] = useState(1);
   const [pageSize] = useState(5);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<Paged<Item>>({ items: [], total: 0, page: 1, pageSize });
+  const [hasMore, setHasMore] = useState(true);
+
+  // Debounce search input
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => setDebouncedQ(q), 350);
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [q]);
+
+  // Reset items khi search mới
+  useEffect(() => {
+    setPage(1);
+    setData({ items: [], total: 0, page: 1, pageSize });
+    setHasMore(true);
+  }, [debouncedQ]);
 
   const query = useMemo(
-    () => new URLSearchParams({ q, page: String(page), pageSize: String(pageSize) }).toString(),
-    [q, page, pageSize],
+    () => new URLSearchParams({ q: debouncedQ, page: String(page), pageSize: String(pageSize) }).toString(),
+    [debouncedQ, page, pageSize],
   );
 
+  // Infinite scroll fetch
   useEffect(() => {
     let cancelled = false;
     async function fetchItems() {
@@ -43,7 +63,18 @@ export default function Items() {
         const res = await fetch(`${API_BASE}/items?${query}`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const body = (await res.json()) as Paged<Item>;
-        if (!cancelled) setData(body);
+        if (!cancelled) {
+          setData((prev) => {
+            // Nếu page = 1 thì reset, nếu >1 thì nối
+            return page === 1
+              ? body
+              : {
+                  ...body,
+                  items: [...prev.items, ...body.items],
+                };
+          });
+          setHasMore(body.items.length > 0 && page * pageSize < body.total);
+        }
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : 'Failed to load';
         if (!cancelled) setError(msg);
@@ -55,9 +86,25 @@ export default function Items() {
     return () => {
       cancelled = true;
     };
-  }, [query]);
+  }, [query, page]);
 
-  const totalPages = Math.max(1, Math.ceil(data.total / data.pageSize));
+  // Infinite scroll handler
+  const handleScroll = useCallback(() => {
+    if (loading || error || !hasMore) return;
+    const scrollY = window.scrollY;
+    const viewport = window.innerHeight;
+    const fullHeight = document.body.offsetHeight;
+    if (fullHeight - (scrollY + viewport) < 200) {
+      setPage((p) => p + 1);
+    }
+  }, [loading, error, hasMore]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  // const totalPages = Math.max(1, Math.ceil(data.total / data.pageSize));
 
   return (
     <div className="p-6 space-y-4">
@@ -74,7 +121,17 @@ export default function Items() {
         />
       </div>
       {loading && <div className="text-gray-600">Loading…</div>}
-      {error && <div className="text-red-600">Failed to load items: {error}</div>}
+      {error && (
+        <div className="text-red-600 flex items-center gap-2">
+          Lỗi tải dữ liệu: {error}
+          <button
+            className="ml-2 px-2 py-1 border rounded text-xs hover:bg-red-50"
+            onClick={() => setError(null)}
+          >
+            Thử lại
+          </button>
+        </div>
+      )}
       {!loading && !error && (
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm">
@@ -120,25 +177,8 @@ export default function Items() {
           </table>
         </div>
       )}
-      <div className="flex items-center gap-2">
-        <button
-          className="px-3 py-1 border rounded disabled:opacity-50"
-          onClick={() => setPage((p) => Math.max(1, p - 1))}
-          disabled={page <= 1}
-        >
-          Prev
-        </button>
-        <span>
-          Page {page} / {totalPages}
-        </span>
-        <button
-          className="px-3 py-1 border rounded disabled:opacity-50"
-          onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-          disabled={page >= totalPages}
-        >
-          Next
-        </button>
-      </div>
+      {loading && <div className="text-gray-600 text-center">Đang tải thêm dữ liệu...</div>}
+      {!hasMore && <div className="text-gray-400 text-center">Đã hiển thị toàn bộ hàng hóa.</div>}
     </div>
   );
 }
