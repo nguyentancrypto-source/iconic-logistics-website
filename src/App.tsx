@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import Home from './interface/Home';
 import About from './interface/About';
 import Services from './interface/Services';
 import Contact from './interface/Contact';
 import Careers from './interface/Careers';
 import Items from './interface/Items';
+import ItemDetail from './interface/ItemDetail';
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/items" element={<Items />} />
+        <Route path="/items/:id" element={<ItemDetail />} />
       </Routes>
     </Router>
   );

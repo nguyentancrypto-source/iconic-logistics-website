@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type Item = {
   id: string;
@@ -87,6 +88,7 @@ export default function Items() {
                 <th className="text-left p-2">Location</th>
                 <th className="text-left p-2">Available</th>
                 <th className="text-left p-2">Updated</th>
+                <th className="text-left p-2">Chi tiết</th>
               </tr>
             </thead>
             <tbody>
@@ -100,6 +102,11 @@ export default function Items() {
                   <td className="p-2">{it.location}</td>
                   <td className="p-2">{it.available ? 'Yes' : 'No'}</td>
                   <td className="p-2">{new Date(it.updatedAt).toLocaleString()}</td>
+                  <td className="p-2">
+                    <Link to={`/items/${it.id}`} className="text-blue-600 hover:underline">
+                      Xem chi tiết
+                    </Link>
+                  </td>
                 </tr>
               ))}
               {data.items.length === 0 && (
