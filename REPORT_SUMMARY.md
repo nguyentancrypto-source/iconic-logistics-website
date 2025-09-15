@@ -110,6 +110,76 @@
 
 ---
 
+## 📌 CẬP NHẬT MỚI — 15/09/2025 (GMT+7)
+
+### Tóm tắt nhanh
+- UI/UX: Nâng cấp hero section hiện đại (dark, gradient động, glassmorphism), stats, CTA, mock dashboard; thêm animations vào Tailwind và global CSS.
+- CI/CD: Cứng hoá pipeline với retry, auto-rerun, auto-fix, auto-rebase; thu gọn thông báo Telegram; tự động PR và auto-merge khi CI xanh; giữ nguyên bảo vệ nhánh main.
+- Điều khiển từ xa: Bổ sung 2 kênh giao task không cần Codespaces:
+	- Telegram Bot theo lịch: tạo task/branch, kích hoạt CI, xem trạng thái.
+	- Slash commands trong comment PR: tương tự Telegram ngay trong GitHub.
+
+### Chi tiết thay đổi
+1) UI/UX & Frontend
+- `src/interface/Home.tsx`: Thiết kế lại hero (orbs động, grid, gradient heading), thẻ stats, CTA, mock dashboard; sửa lỗi JSX nhỏ gây hỏng lint/CI.
+- `tailwind.config.js`: Thêm keyframes/animations: gradient-x, fade-in-up, float/slow/reverse, bounce-gentle, spin-slow.
+- `src/index.css`: Thêm utilities: `bg-grid-pattern`, `animate-gradient-x`, `animate-fadeInUp`, lớp `glass`, delays.
+
+2) CI/CD & DevOps
+- `.github/workflows/ci.yml`:
+	- Build + test + typecheck + lint + Lighthouse + a11y (axe) với retry bước quan trọng.
+	- Thu gọn thông báo Telegram: chỉ báo đỏ khi PR run và ở lần thử cuối; báo xanh kèm PR title và danh sách file thay đổi (top 10).
+	- Cho phép `workflow_dispatch` để chạy CI từ Actions UI.
+- Auto PR & Auto Merge:
+	- `.github/workflows/ui-ux-autopr.yml`: Tự tạo/tái sử dụng PR từ nhánh `ui-ux/*` vào `main`, bật auto-merge (squash) khi CI xanh.
+- Ổn định & Tự phục hồi:
+	- `.github/workflows/ci-auto-rerun.yml`: Tự rerun CI tối đa 3 lần cho nhánh `ui-ux/**` khi fail.
+	- `.github/workflows/auto-rebase-ui-ux.yml`: Tự rebase nhánh UI/UX lên `main` để tránh stale-branch.
+- Auto-fix & Push không tương tác:
+	- `.github/workflows/auto-fix-style.yml`: Tự chạy ESLint/Prettier fix trên `ui-ux/**` (bỏ qua `.github/workflows/**`), push bằng `BOT_PAT` nếu có; fallback `GITHUB_TOKEN`.
+- Thông báo & Triển khai:
+	- `.github/workflows/notify-telegram.yml`: Khi PR merge vào `main`, gửi Telegram “merged” kèm PR title và file thay đổi (top 10).
+	- `.github/workflows/pages.yml`: Deploy GitHub Pages khi `main` cập nhật.
+- Tiện ích không cần lệnh cục bộ:
+	- `.github/workflows/bot-commit.yml`: Nút “Run workflow” để bot tạo commit kích hoạt CI (dùng `BOT_PAT`).
+
+3) Giao task không cần Codespaces
+- Telegram Bot theo lịch:
+	- Workflow: `.github/workflows/telegram-tasks.yml` (cron mỗi 5 phút + hỗ trợ `workflow_dispatch`).
+	- Script: `scripts/telegram-tasks.js` (Node 20, dùng fetch API).
+	- Lệnh hỗ trợ trong Telegram: `/help`, `/backlog <title> | <desc>`, `/ci <branch|main>`, `/status`.
+	- Cơ chế: Tạo nhánh `ui-ux/task-*`, ghi `BACKLOG.md`, push bằng `BOT_PAT`; Auto‑PR mở PR và auto‑merge khi CI xanh.
+	- Lưu ý: Workflow theo lịch chỉ hoạt động sau khi file nằm trên nhánh mặc định (`main`). PR hiện tại auto‑merge xong sẽ kích hoạt lịch.
+- Slash commands trong PR:
+	- Workflow: `.github/workflows/commands.yml` (lắng nghe `issue_comment: created`).
+	- Lệnh: `/help`, `/backlog <title> | <desc>`, `/ci <branch|main>`, `/status`.
+	- Dùng được ngay khi comment trong PR thuộc repo (không cần Telegram/secrets mới).
+
+### Cách dùng sau khi PR merge vào main
+- Trên Telegram:
+	- Giao task: `/backlog Redesign Services page | Match new hero style`
+	- Kích hoạt CI: `/ci main`
+	- Xem trạng thái CI: `/status`
+- Trong PR (comment):
+	- `/backlog Add KPI cards | 3 variants`
+	- `/ci ui-ux/modern-hero-and-animations`
+	- `/status`
+
+### Điều kiện/Secrets
+- Cần có: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `BOT_PAT` (đã cấu hình trước đó).
+- Bot chỉ xử lý tin nhắn từ `TELEGRAM_CHAT_ID` đã đặt (có thể là group ID nếu dùng nhóm).
+
+### Việc còn lại/Next steps ngắn
+- [ ] Smoke test Telegram bot sau khi PR merge vào `main` (do giới hạn workflow theo lịch trên default branch).
+- [ ] (Tuỳ chọn) Giảm cron xuống `*/2 * * * *` nếu muốn phản hồi nhanh hơn.
+- [ ] Mở rộng UI/UX cho toàn site: typography system, component library (Button/Card/Modal), micro‑interactions.
+
+### Bổ sung vào Update Log
+- 15/09/2025 09:06 — Thêm workflows: commands (PR slash), telegram-tasks (cron), auto-rerun CI, auto-rebase, notify-telegram, bot-commit; nâng cấp ci.yml; cập nhật auto-fix.
+- 15/09/2025 09:08 — Cập nhật UI/UX Home (hero nâng cấp, animations), bổ sung Tailwind keyframes và CSS utilities; sửa lỗi JSX gây hỏng CI.
+- 15/09/2025 09:10 — Bật auto‑PR và auto‑merge cho nhánh UI/UX; cấu hình thông báo Telegram chi tiết (PR title + changed files).
+
+
 ### 🚦 CI/CD Auto-Review
 
 - Khi có PR, workflow CI sẽ tự động build, test, chạy Lighthouse (lhci) và kiểm tra accessibility (axe-core) trên bản preview.
