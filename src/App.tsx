@@ -5,6 +5,8 @@ import About from './interface/About';
 import Services from './interface/Services';
 import Contact from './interface/Contact';
 import Careers from './interface/Careers';
+import Blog from './interface/Blog';
+import BlogDetail from './interface/BlogDetail';
 import { ErrorBoundary } from './interface/ErrorBoundary';
 import { Container } from './components';
 
@@ -83,6 +85,8 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/careers" element={<Careers />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
             </Routes>
           </main>
 
