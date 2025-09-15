@@ -23,7 +23,7 @@ beforeEach(() => {
   ) as unknown as typeof fetch;
 });
 afterEach(() => {
-  (global.fetch as any).mockRestore?.();
+  vi.restoreAllMocks();
 });
 
 describe('Items', () => {

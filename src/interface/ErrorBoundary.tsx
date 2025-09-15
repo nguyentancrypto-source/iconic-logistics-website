@@ -10,9 +10,11 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   static getDerivedStateFromError(error: Error) {
     return { hasError: true, error };
   }
-  // eslint-disable-next-line class-methods-use-this
-  componentDidCatch(/* error: Error, info: React.ErrorInfo */) {
-    // Optionally log error
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
+    // Optionally log error or send to monitoring
+    void error;
+    void info;
+    // console.error('ErrorBoundary caught:', error, info);
   }
   render() {
     if (this.state.hasError) {
