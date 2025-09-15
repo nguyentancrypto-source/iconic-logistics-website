@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { itemsRouter, searchRouter } from './routes/items.ts';
 
 dotenv.config();
 
@@ -17,8 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
-app.use('/items', itemsRouter);
-app.use('/search', searchRouter);
+// items/search API removed
 
 app.listen(PORT, () => {
   console.log(`🚚 Logistics backend running on http://localhost:${PORT}`);

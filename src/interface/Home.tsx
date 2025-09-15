@@ -49,9 +49,7 @@ export default function Home() {
           <Button variant="outline" size="lg" className="text-lg px-8 py-3 shadow-lg">
             <a href="/services" className="block w-full h-full">Khám phá dịch vụ</a>
           </Button>
-          <Button variant="danger" size="lg" className="text-lg px-8 py-3 shadow-lg">
-            <a href="/items" className="block w-full h-full">Xem hàng hóa</a>
-          </Button>
+          
         </div>
         <Modal open={modal} onClose={() => setModal(false)} title="Demo Modal">
           <div className="space-y-2">
