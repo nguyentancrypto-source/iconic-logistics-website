@@ -65,7 +65,7 @@ export default function Home() {
                 </button>
                 <button className="group px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white font-bold rounded-2xl hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105">
                   <span className="flex items-center justify-center gap-2">
-                    <span className="text-xl">�</span>
+                    <span className="text-xl">💬</span>
                     Free Consultation
                   </span>
                 </button>
@@ -150,35 +150,35 @@ export default function Home() {
               Advanced technology meets logistics expertise to deliver unparalleled results
             </p>
           </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-500">500+</div>
-                  <div className="text-sm">Khách hàng</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-500">24/7</div>
-                  <div className="text-sm">Hỗ trợ</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-500">99%</div>
-                  <div className="text-sm">Hài lòng</div>
-                </div>
-              </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center bg-white rounded-2xl shadow-logistics-card p-8">
+              <div className="text-2xl font-bold text-orange-500">500+</div>
+              <div className="text-sm text-gray-600">Khách hàng</div>
             </div>
-            
-            <div className="animate-fadeInUp">
-              <div className="relative">
-                <img
-                  src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=800&q=80"
-                  alt="Kho logistics hiện đại"
-                  className="w-full h-96 object-cover rounded-2xl shadow-logistics-card"
-                />
-                <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-logistics-card">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white text-xl">🚚</div>
-                    <div>
-                      <div className="font-bold text-gray-800">Live Tracking</div>
-                      <div className="text-sm text-gray-600">Theo dõi realtime</div>
-                    </div>
+            <div className="text-center bg-white rounded-2xl shadow-logistics-card p-8">
+              <div className="text-2xl font-bold text-orange-500">24/7</div>
+              <div className="text-sm text-gray-600">Hỗ trợ</div>
+            </div>
+            <div className="text-center bg-white rounded-2xl shadow-logistics-card p-8">
+              <div className="text-2xl font-bold text-orange-500">99%</div>
+              <div className="text-sm text-gray-600">Hài lòng</div>
+            </div>
+          </div>
+
+          <div className="mt-16 animate-fadeInUp">
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=800&q=80"
+                alt="Kho logistics hiện đại"
+                className="w-full h-96 object-cover rounded-2xl shadow-logistics-card"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-logistics-card">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white text-xl">🚚</div>
+                  <div>
+                    <div className="font-bold text-gray-800">Live Tracking</div>
+                    <div className="text-sm text-gray-600">Theo dõi realtime</div>
                   </div>
                 </div>
               </div>
