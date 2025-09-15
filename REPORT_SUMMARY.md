@@ -1,4 +1,22 @@
-# 📊 PROJECT REPORT SUMMARY - Iconic Logistics Website
+# � Quick Handoff — Sept 15, 2025 (ICT)
+
+Status
+- Branch: `ui-ux/modern-hero-and-animations` (PR #60) — CI build: PASS; Auto PR: PASS; Auto Fix: will no longer fail push (updated); Auto Approve: currently failing due to self-approval restriction.
+- Rebase: Completed; conflicts resolved in `commands.yml`, `telegram-tasks.js`, `notify-telegram.yml`, and `App.test.tsx` (tests green).
+- Telegram merge notifier: Enhanced (totals, top commits, links) and ready; will trigger on next merge to `main`.
+
+Immediate Next Steps
+1) Manually Approve PR #60 (one-time) — auto-approve uses `pull_request_target` from `main`, so today’s fix will apply after this merges.
+2) Let auto-merge complete (already enabled) and verify Telegram “PR merged” message content.
+3) After merge: auto-approve for future UI/UX PRs will use `BOT_PAT`, and Auto Fix won’t fail on push permission.
+
+Handy Links
+- PR: https://github.com/nguyentancrypto-source/iconic-logistics-website/pull/60
+- Checks: gh pr checks 60
+
+---
+
+# �📊 PROJECT REPORT SUMMARY - Iconic Logistics Website
 
 **Generated:** September 15, 2025 - 09:00 GMT+7 (ICT)
 **Project:** Iconic Logistics Website  
