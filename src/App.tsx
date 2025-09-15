@@ -5,8 +5,6 @@ import About from './interface/About';
 import Services from './interface/Services';
 import Contact from './interface/Contact';
 import Careers from './interface/Careers';
-import Items from './interface/Items';
-import ItemDetail from './interface/ItemDetail';
 import { ErrorBoundary } from './interface/ErrorBoundary';
 
 function App() {
@@ -19,7 +17,7 @@ function App() {
           <Link to="/services">Services</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/careers">Careers</Link>
-          <Link to="/items">Items</Link>
+          
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -27,8 +25,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/items" element={<Items />} />
-          <Route path="/items/:id" element={<ItemDetail />} />
+          
         </Routes>
       </Router>
     </ErrorBoundary>

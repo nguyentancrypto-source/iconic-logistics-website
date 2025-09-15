@@ -4,14 +4,14 @@
 
 - React 18 + Vite + TypeScript
 - Tailwind CSS (configured, index.css wired up)
-- React Router (pages: Home, About, Services, Contact, Careers, Items in `src/interface/`)
+- React Router (pages: Home, About, Services, Contact, Careers in `src/interface/`)
 - Vitest + jsdom + smoke test
 - ESLint 9 (flat config, scripts in package.json)
 - GitHub Actions CI workflow (Node 20: install, typecheck, lint | true, test, build)
 
 ## Key Files & Structure
 
-- `src/interface/` — App pages: Home, About, Services, Contact, Careers, Items
+- `src/interface/` — App pages: Home, About, Services, Contact, Careers
 - `tailwind.config.js`, `postcss.config.js`, `src/index.css` — Tailwind setup
 - `.github/workflows/ci.yml` — GitHub Actions CI
 - `vitest.config.ts`, `src/App.test.tsx`, `src/setupTests.ts` — Testing setup

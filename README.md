@@ -17,43 +17,24 @@
 
 ## 3) Cấu trúc thư mục
 
-- `src/` — Frontend React (pages trong `src/interface/`: Home, About, Services, Contact, Careers, Items).
-- `core/` — Domain entities và cổng (interfaces), ví dụ `Item` và `ItemRepository`.
-- `app/` — Use cases (ví dụ `listItems`).
+- `src/` — Frontend React (pages trong `src/interface/`: Home, About, Services, Contact, Careers).
+- `core/` — Domain entities và cổng (interfaces).
+- `app/` — Use cases.
 - `infrastructure/` — Express server, router, repository in-memory, mock data.
 - `.github/workflows/` — CI (typecheck, lint, test, build) và Pages deploy.
 
-## 4) API Backend (in-memory)
+## 4) API Backend
 
 - Base URL mặc định khi dev: `http://localhost:4000`
 - Biến môi trường: `PORT`, `CORS_ORIGIN` (xem `.env.example`).
 
-Các endpoints chính:
+Các endpoints hiện có:
 
+- `GET /` — Thông tin API.
 - `GET /health` — Kiểm tra trạng thái.
-- `GET /items` — Liệt kê/paginate và tìm kiếm.
-  - Query params: `q` (search), `category`, `available` (`true|false`), `page` (mặc định 1), `pageSize` (mặc định 20, tối đa 100)
-  - Trả về: `{ items: Item[], total: number, page: number, pageSize: number }`
-- `GET /search` — Alias của `/items` với cùng query params.
-
-Kiểu `Item`:
-
-```ts
-type Item = {
-  id: string;
-  name: string;
-  sku: string;
-  category: string;
-  weightKg: number;
-  location: string;
-  available: boolean;
-  updatedAt: string; // ISO
-};
-```
 
 ## 5) Frontend
 
-- Trang `Items` đã tích hợp API: tìm kiếm theo `q`, phân trang, hiển thị bảng, trạng thái loading/error.
 - Có thể chỉnh `VITE_API_BASE` để trỏ đến API khi deploy/đổi cổng.
 
 ## 6) Scripts (npm)
@@ -108,7 +89,7 @@ npm run dev:server:watch  # backend
 
 # Kiểm tra API
 curl http://localhost:4000/health
-curl 'http://localhost:4000/items?q=container&page=1&pageSize=2'
+curl 'http://localhost:4000/health'
 ```
 
 ## 11) Tự động tạo/đồng bộ GitHub Issues từ BACKLOG.md
