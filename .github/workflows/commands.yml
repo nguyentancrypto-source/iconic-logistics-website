@@ -62,9 +62,9 @@ jobs:
               const branch = `ui-ux/task-${slugify(title.trim())}`;
 
               // Create branch and update BACKLOG.md
-              const { execSync } = require('node:child_process');
-              const fs = require('node:fs');
-              const run = (c) => { core.info(`$ ${c}`); return execSync(c, { stdio: 'pipe' }).toString(); };
+              const cp = await import('node:child_process');
+              const fs = await import('node:fs');
+              const run = (c) => { core.info(`$ ${c}`); return cp.execSync(c, { stdio: 'pipe' }).toString(); };
 
               run('git config user.name "iconic-bot"');
               run('git config user.email "bot@users.noreply.github.com"');

@@ -15,9 +15,9 @@
     - DRY_RUN = 'true'|'false'
 */
 
-const { execSync } = require('node:child_process');
-const fs = require('node:fs');
-const path = require('node:path');
+import { execSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const REPO = process.env.GITHUB_REPOSITORY || '';
 const [OWNER, NAME] = REPO.split('/');
