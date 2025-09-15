@@ -1,69 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Global styles for professional logistics theme */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #FF4500 0%, #FE4B00 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #FFD2BF 0%, #FFF5F2 100%);
+}
+
+/* Professional card shadows */
+.shadow-logistics-card {
+  box-shadow: 0 4px 6px -1px rgba(255, 69, 0, 0.1), 0 2px 4px -1px rgba(255, 69, 0, 0.06);
+}
+
+.shadow-logistics-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(255, 69, 0, 0.1), 0 10px 10px -5px rgba(255, 69, 0, 0.04);
+}
+
 a {
-  /* Thêm style cho link nếu cần */
+  color: #FF4500;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 a:hover {
-  color: #535bf2;
+  color: #FF6500;
+  text-shadow: 0 1px 2px rgba(255, 69, 0, 0.2);
 }
 
 
 body {
   margin: 0;
-  font-family: 'Inter', 'Roboto', Arial, sans-serif;
-  background: theme('colors.background.DEFAULT');
-  color: theme('colors.neutral.DEFAULT');
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  color: #1a1a1a;
   min-width: 320px;
   min-height: 100vh;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 
-h1, h2, h3, h4, h5 {
-  font-family: 'Inter', 'Roboto', Arial, sans-serif;
-  font-weight: 800;
-  color: theme('colors.primary.DEFAULT');
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  color: #FF4500;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0 0 0.5em 0;
 }
 
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 800; }
+h3 { font-size: clamp(1.25rem, 3vw, 2rem); font-weight: 700; }
+h4 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); font-weight: 600; }
 
-button {
-  border-radius: theme('borderRadius.xl');
-  border: 1px solid theme('colors.logistics.border');
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+
+/* Professional button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #FF4500 0%, #FE4B00 100%);
+  color: white;
   font-weight: 600;
-  font-family: 'Inter', 'Roboto', Arial, sans-serif;
-  background-color: theme('colors.primary.DEFAULT');
-  color: #fff;
+  font-family: 'Inter', sans-serif;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
   cursor: pointer;
-  box-shadow: theme('boxShadow.logistics');
-  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  box-shadow: 0 4px 14px 0 rgba(255, 69, 0, 0.39);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
-button:hover {
-  background: theme('colors.primary.light');
-  color: #fff;
-  transform: translateY(-2px) scale(1.04);
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(255, 69, 0, 0.45);
+  background: linear-gradient(135deg, #FF6500 0%, #FF5200 100%);
 }
-button:focus,
-button:focus-visible {
-  outline: 3px solid theme('colors.accent.DEFAULT');
-  outline-offset: 2px;
+
+.btn-secondary {
+  background: white;
+  color: #FF4500;
+  border: 2px solid #FF4500;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+  background: #FF4500;
+  color: white;
+  transform: translateY(-2px);
 }
 
 
+/* Professional link styles */
 a {
-  color: theme('colors.primary.DEFAULT');
-  text-decoration: underline;
-  transition: color 0.2s;
-}
-a:hover {
-  color: theme('colors.accent.DEFAULT');
+  color: #FF4500;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.animate-fadein {
-  animation: fadein 0.7s ease;
+a:hover {
+  color: #FE4B00;
+  text-shadow: 0 2px 4px rgba(255, 69, 0, 0.2);
+}
+
+/* Professional animations */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-bounce-gentle {
+  animation: bounceGentle 2s infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Professional card component */
+.card-professional {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 69, 0, 0.1);
+}
+
+.card-professional:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(255, 69, 0, 0.2);
 }
