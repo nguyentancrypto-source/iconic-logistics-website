@@ -142,8 +142,8 @@ jobs:
             exit 0
           fi
           PR_NUMBER=${{ github.event.pull_request.number }}
-          PR_TITLE=${{ steps.changed.outputs.title }}
-          PR_URL=${{ steps.changed.outputs.url }}
+          PR_TITLE="${{ steps.changed.outputs.title }}"
+          PR_URL="${{ steps.changed.outputs.url }}"
           FILES=$(echo "${{ steps.changed.outputs.files }}")
           TEXT="🟢 CI Green for PR #$PR_NUMBER — $PR_TITLE\nRepo: ${{ github.repository }}\nBranch: ${{ github.head_ref || github.ref_name }}\nPR: $PR_URL\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nChanges:\n$FILES\nStatus: Ready to auto-merge when checks complete."
           curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
