@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, useRef, useCallback } from 'react';
+import { Spinner, Skeleton } from './Loading';
 import { Link } from 'react-router-dom';
 
 type Item = {
@@ -107,7 +108,7 @@ export default function Items() {
   // const totalPages = Math.max(1, Math.ceil(data.total / data.pageSize));
 
   return (
-    <div className="p-6 space-y-4">
+  <div className="p-6 space-y-4 bg-background">
       <h1 className="text-2xl font-bold">Items</h1>
       <div className="flex gap-2">
         <input
@@ -120,12 +121,17 @@ export default function Items() {
           }}
         />
       </div>
-      {loading && <div className="text-gray-600">Loading…</div>}
+  {loading && (
+    <div className="flex items-center gap-2 text-neutral-600">
+      <Spinner size={24} />
+      <span>Đang tải dữ liệu...</span>
+    </div>
+  )}
       {error && (
-        <div className="text-red-600 flex items-center gap-2">
+  <div className="text-red-600 flex items-center gap-2">
           Lỗi tải dữ liệu: {error}
           <button
-            className="ml-2 px-2 py-1 border rounded text-xs hover:bg-red-50"
+            className="ml-2 px-2 py-1 border border-logistics-border rounded text-xs hover:bg-accent hover:text-white transition-colors"
             onClick={() => setError(null)}
           >
             Thử lại
@@ -134,7 +140,7 @@ export default function Items() {
       )}
       {!loading && !error && (
         <div className="overflow-x-auto">
-          <table className="min-w-full text-sm">
+          <table className="min-w-full text-sm bg-background">
             <thead>
               <tr className="border-b">
                 <th className="text-left p-2">ID</th>
@@ -150,7 +156,7 @@ export default function Items() {
             </thead>
             <tbody>
               {data.items.map((it) => (
-                <tr key={it.id} className="border-b hover:bg-gray-50">
+                <tr key={it.id} className="border-b border-logistics-border hover:bg-background">
                   <td className="p-2 font-mono">{it.id}</td>
                   <td className="p-2">{it.name}</td>
                   <td className="p-2">{it.sku}</td>
@@ -168,17 +174,27 @@ export default function Items() {
               ))}
               {data.items.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="p-4 text-center text-gray-500">
+                  <td colSpan={8} className="p-4 text-center text-neutral-500">
                     No items found
                   </td>
                 </tr>
               )}
+              {loading &&
+                Array.from({ length: 3 }).map((_, i) => (
+                  <tr key={`skeleton-${i}`}> 
+                    {Array.from({ length: 9 }).map((_, j) => (
+                      <td key={j} className="p-2">
+                        <Skeleton className="h-4 w-full" />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
       )}
-      {loading && <div className="text-gray-600 text-center">Đang tải thêm dữ liệu...</div>}
-      {!hasMore && <div className="text-gray-400 text-center">Đã hiển thị toàn bộ hàng hóa.</div>}
+  {loading && <div className="flex justify-center py-4"><Spinner size={28} /><span className="ml-2 text-neutral-600">Đang tải thêm dữ liệu...</span></div>}
+  {!hasMore && <div className="text-neutral-400 text-center">Đã hiển thị toàn bộ hàng hóa.</div>}
     </div>
   );
 }

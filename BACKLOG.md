@@ -133,7 +133,13 @@
   - Sử dụng hình ảnh thực tế (ảnh kho, xe tải, nhân viên, bản đồ...)
   - Đặt các nút CTA nổi bật ở vị trí hợp lý (đầu trang, cuối trang, giữa section).
 
+
 #### ⏭️ UI/UX Improvements
+
+- [ ] Cập nhật UI/UX toàn site
+  - [ ] Rà soát, chỉnh sửa layout, màu sắc, spacing, icon, hình ảnh để đồng bộ nhận diện thương hiệu logistics
+  - [ ] Đảm bảo trải nghiệm người dùng mượt mà, hiện đại, dễ sử dụng trên mọi thiết bị
+  - **Acceptance:** Giao diện đồng bộ, UX tốt, phù hợp ngành logistics
 
 - [ ] Thiết kế theme logistics chuyên nghiệp
   - [ ] Sử dụng màu sắc: Primary #FF4500, Secondary #FE4B00, Accent #FFD2BF, Neutral #333, Background #f9f9f9
