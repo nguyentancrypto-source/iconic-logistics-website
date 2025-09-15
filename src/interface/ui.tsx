@@ -20,13 +20,13 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    'inline-flex items-center gap-2 rounded-xl font-semibold shadow-logistics transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary hover:scale-105 active:scale-95';
+    'inline-flex items-center gap-2 rounded-xl font-semibold shadow-logistics transition-all duration-200 focus:outline-none focus:ring-2 hover:scale-105 active:scale-95';
   const sizeClass = size === 'lg' ? 'px-8 py-3 text-lg' : 'px-4 py-2 text-base';
   const variants: Record<string, string> = {
-    primary: 'bg-primary text-white hover:bg-primary-light',
-    accent: 'bg-accent text-white hover:bg-accent-light',
-    outline: 'bg-white border border-primary text-primary hover:bg-primary-light hover:text-white',
-    danger: 'bg-red-500 text-white hover:bg-red-600',
+    primary: 'bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-300',
+    accent: 'bg-accent-500 text-neutral-900 hover:bg-accent-400 focus:ring-accent-300',
+    outline: 'bg-white border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white focus:ring-primary-300',
+    danger: 'bg-red-500 text-white hover:bg-red-600 focus:ring-red-300',
   };
   return (
     <button
@@ -63,7 +63,7 @@ export function Card({
 }: CardProps) {
   return (
     <div
-      className={`bg-background rounded-2xl p-6 ${shadow ? 'shadow-logistics' : ''} ${border ? 'border border-logistics-border' : ''} ${animate ? 'animate-fadein' : ''} ${className}`}
+      className={`bg-white rounded-2xl p-6 ${shadow ? 'shadow-logistics-card' : ''} ${border ? 'border border-neutral-200' : ''} ${animate ? 'hover:shadow-logistics-card-hover transition-shadow duration-300' : ''} ${className}`}
       {...props}
     >
       {children}
