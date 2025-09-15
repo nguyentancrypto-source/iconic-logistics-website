@@ -1,0 +1,50 @@
+name: Auto Rebase UI/UX PRs
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [synchronize, reopened, ready_for_review]
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  rebase:
+    if: >-
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' &&
+       (startsWith(github.event.pull_request.head.ref, 'ui-ux/') ||
+        startsWith(github.event.pull_request.head.ref, 'feat/ui-ux-')))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebase PR onto main
+        if: github.event_name == 'pull_request'
+        uses: cirrus-actions/rebase@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Find open UI/UX PRs and trigger rebase
+        if: github.event_name == 'push'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              base: 'main'
+            });
+            const targets = prs.filter(pr => pr.head.ref.startsWith('ui-ux/') || pr.head.ref.startsWith('feat/ui-ux-'));
+            for (const pr of targets) {
+              core.info(`Would rebase PR #${pr.number} (${pr.head.ref})`);
+              // Create a PR review comment to trigger rebase action via /rebase if needed
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: 'Triggering rebase due to main update.'
+              });
+            }
