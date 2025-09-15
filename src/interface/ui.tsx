@@ -35,7 +35,12 @@ export function Button({
       {...props}
     >
       {leftIcon && <span className="mr-1">{leftIcon}</span>}
-      {loading ? <span aria-label="loading" className="animate-spin mr-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span> : null}
+      {loading ? (
+        <span
+          aria-label="loading"
+          className="animate-spin mr-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+        ></span>
+      ) : null}
       {children}
       {rightIcon && <span className="ml-1">{rightIcon}</span>}
     </button>
@@ -48,10 +53,17 @@ type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   animate?: boolean;
 };
 
-export function Card({ children, className = '', shadow = true, border = false, animate = true, ...props }: CardProps) {
+export function Card({
+  children,
+  className = '',
+  shadow = true,
+  border = false,
+  animate = true,
+  ...props
+}: CardProps) {
   return (
     <div
-  className={`bg-background rounded-2xl p-6 ${shadow ? 'shadow-logistics' : ''} ${border ? 'border border-logistics-border' : ''} ${animate ? 'animate-fadein' : ''} ${className}`}
+      className={`bg-background rounded-2xl p-6 ${shadow ? 'shadow-logistics' : ''} ${border ? 'border border-logistics-border' : ''} ${animate ? 'animate-fadein' : ''} ${className}`}
       {...props}
     >
       {children}

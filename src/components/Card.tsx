@@ -11,16 +11,18 @@ export function Card({ children, className = '', hover = true, padding = 'md' }:
   const paddingClasses = {
     sm: 'p-4',
     md: 'p-6',
-    lg: 'p-8'
+    lg: 'p-8',
   };
-  
+
   return (
-    <div className={`
+    <div
+      className={`
       bg-white rounded-2xl shadow-logistics border border-logistics-border
       ${hover ? 'hover:shadow-xl hover:-translate-y-1 transition-all duration-300' : ''}
       ${paddingClasses[padding]}
       ${className}
-    `}>
+    `}
+    >
       {children}
     </div>
   );
@@ -33,7 +35,14 @@ interface IconCardProps extends CardProps {
   action?: React.ReactNode;
 }
 
-export function IconCard({ icon, title, description, action, className = '', ...props }: IconCardProps) {
+export function IconCard({
+  icon,
+  title,
+  description,
+  action,
+  className = '',
+  ...props
+}: IconCardProps) {
   return (
     <Card className={`text-center ${className}`} {...props}>
       <div className="flex flex-col items-center space-y-4">

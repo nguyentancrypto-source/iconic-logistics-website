@@ -6,7 +6,7 @@ describe('ErrorBoundary', () => {
     render(
       <ErrorBoundary>
         <div>Safe content</div>
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
     expect(screen.getByText('Safe content')).toBeInTheDocument();
   });
@@ -18,7 +18,7 @@ describe('ErrorBoundary', () => {
     render(
       <ErrorBoundary>
         <Problem />
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
     expect(screen.getByText(/đã xảy ra lỗi/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /tải lại/i })).toBeInTheDocument();
