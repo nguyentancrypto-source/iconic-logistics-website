@@ -8,20 +8,20 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Stunning Hero Section */}
-      <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center overflow-hidden">
+      <section className="relative min-h-screen bg-gradient-to-br from-neutral-900 via-primary-900 to-secondary-900 flex items-center overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           {/* Geometric patterns */}
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
-            <div className="absolute top-20 left-20 w-96 h-96 border border-orange-400/30 rounded-full animate-spin-slow"></div>
-            <div className="absolute top-40 right-20 w-72 h-72 border-2 border-blue-400/30 rounded-full animate-pulse"></div>
-            <div className="absolute bottom-20 left-1/3 w-48 h-48 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 rounded-full blur-2xl animate-float"></div>
+            <div className="absolute top-20 left-20 w-96 h-96 border border-primary-400/30 rounded-full animate-spin-slow"></div>
+            <div className="absolute top-40 right-20 w-72 h-72 border-2 border-secondary-400/30 rounded-full animate-pulse"></div>
+            <div className="absolute bottom-20 left-1/3 w-48 h-48 bg-gradient-to-r from-primary-400/20 to-accent-400/20 rounded-full blur-2xl animate-float"></div>
           </div>
 
           {/* Floating orbs */}
-          <div className="absolute top-1/4 left-10 w-32 h-32 bg-gradient-to-r from-orange-400 to-red-500 rounded-full blur-2xl opacity-30 animate-float-slow"></div>
-          <div className="absolute top-1/3 right-10 w-48 h-48 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-3xl opacity-20 animate-float-reverse"></div>
-          <div className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-2xl opacity-25 animate-bounce-gentle"></div>
+          <div className="absolute top-1/4 left-10 w-32 h-32 bg-gradient-to-r from-primary-400 to-secondary-500 rounded-full blur-2xl opacity-30 animate-float-slow"></div>
+          <div className="absolute top-1/3 right-10 w-48 h-48 bg-gradient-to-r from-secondary-400 to-primary-500 rounded-full blur-3xl opacity-20 animate-float-reverse"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-gradient-to-r from-accent-400 to-primary-500 rounded-full blur-2xl opacity-25 animate-bounce-gentle"></div>
 
           {/* Grid pattern overlay */}
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -32,8 +32,8 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
             <div className="text-center lg:text-left space-y-8">
               {/* Subtitle badge */}
-              <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-orange-300 font-medium animate-fadeInUp">
-                <span className="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></span>
+              <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-accent-300 font-medium animate-fadeInUp">
+                <span className="w-2 h-2 bg-primary-400 rounded-full mr-2 animate-pulse"></span>
                 Logistics Technology Leader
               </div>
 
@@ -43,10 +43,10 @@ export default function Home() {
                 style={{ animationDelay: '0.2s' }}
               >
                 <span className="block text-white mb-2">Future of</span>
-                <span className="block bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500 bg-clip-text text-transparent animate-gradient-x">
+                <span className="block bg-gradient-to-r from-primary-400 via-accent-400 to-secondary-500 bg-clip-text text-transparent animate-gradient-x">
                   Logistics
                 </span>
-                <span className="block text-blue-300 text-5xl lg:text-6xl mt-4">Made Simple</span>
+                <span className="block text-secondary-300 text-5xl lg:text-6xl mt-4">Made Simple</span>
               </h1>
 
               {/* Description */}
@@ -55,9 +55,9 @@ export default function Home() {
                 style={{ animationDelay: '0.4s' }}
               >
                 Revolutionize your supply chain with AI-powered logistics solutions.
-                <span className="text-orange-300 font-medium"> Real-time tracking</span>,
-                <span className="text-blue-300 font-medium"> smart warehousing</span>, and
-                <span className="text-yellow-300 font-medium"> predictive analytics</span> - all in
+                <span className="text-primary-300 font-medium"> Real-time tracking</span>,
+                <span className="text-secondary-300 font-medium"> smart warehousing</span>, and
+                <span className="text-accent-300 font-medium"> predictive analytics</span> - all in
                 one platform.
               </p>
 
@@ -66,8 +66,8 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start animate-fadeInUp"
                 style={{ animationDelay: '0.6s' }}
               >
-                <button className="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-2xl shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-105 overflow-hidden">
-                  <span className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <button className="group relative px-8 py-4 bg-gradient-to-r from-primary-500 to-secondary-600 text-white font-bold rounded-2xl shadow-2xl hover:shadow-primary-500/25 transition-all duration-300 hover:scale-105 overflow-hidden">
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   <span className="relative flex items-center justify-center gap-2">
                     <span className="text-xl">🚀</span>
                     Start Your Journey
@@ -87,17 +87,17 @@ export default function Home() {
                 style={{ animationDelay: '0.8s' }}
               >
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-400">1000+</div>
-                  <div className="text-sm text-gray-400">Happy Clients</div>
+                  <div className="text-3xl font-bold text-primary-400">1000+</div>
+                  <div className="text-sm text-neutral-400">Happy Clients</div>
                 </div>
-                <div className="w-px h-12 bg-gray-600"></div>
+                <div className="w-px h-12 bg-neutral-600"></div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-400">99.9%</div>
-                  <div className="text-sm text-gray-400">Uptime</div>
+                  <div className="text-3xl font-bold text-secondary-400">99.9%</div>
+                  <div className="text-sm text-neutral-400">Uptime</div>
                 </div>
-                <div className="w-px h-12 bg-gray-600"></div>
+                <div className="w-px h-12 bg-neutral-600"></div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400">24/7</div>
+                  <div className="text-3xl font-bold text-accent-400">24/7</div>
                   <div className="text-sm text-gray-400">Support</div>
                 </div>
               </div>
