@@ -111,8 +111,8 @@ jobs:
             core.setOutput('title', title);
             core.setOutput('url', url);
             core.setOutput('files', top + more);
-      - name: Notify Telegram on failure
-        if: failure()
+      - name: Notify Telegram on failure (PR, final attempt)
+        if: failure() && github.event_name == 'pull_request' && github.run_attempt >= 3
         env:
           BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -121,7 +121,8 @@ jobs:
             echo "Telegram secrets not set, skipping notification."
             exit 0
           fi
-          TEXT="🔴 CI Failed\nRepo: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nEvent: ${{ github.event_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          TEXT="🔴 CI Failed (final attempt) for PR #$PR_NUMBER\nRepo: ${{ github.repository }}\nBranch: ${{ github.head_ref || github.ref_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nNote: Auto-retried and still failing."
           curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 
       - name: Notify Telegram on success (PR only)
