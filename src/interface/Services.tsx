@@ -45,7 +45,7 @@ const services = [
   }
 ];
 
-export function Services() {
+export default function Services() {
   return (
     <div className="min-h-screen">
       <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white overflow-hidden">
