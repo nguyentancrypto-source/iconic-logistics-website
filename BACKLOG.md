@@ -130,7 +130,6 @@
   - Sử dụng hình ảnh thực tế (ảnh kho, xe tải, nhân viên, bản đồ...)
   - Đặt các nút CTA nổi bật ở vị trí hợp lý (đầu trang, cuối trang, giữa section).
 
-
 #### ⏭️ UI/UX Improvements
 
 - [ ] Cập nhật UI/UX toàn site
@@ -193,7 +192,6 @@
   - Integration tests for API calls
   - E2E tests with Playwright
   - Coverage reporting improvement
-
 
 - [ ] Thêm trang chi tiết hàng hóa (Item Detail)
   - [ ] Khi bấm “Xem chi tiết” sẽ chuyển sang trang /items/:id

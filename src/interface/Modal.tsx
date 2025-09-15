@@ -16,8 +16,8 @@ export function Modal({ open, onClose, title, children, className = '', ...props
       onClick={onClose}
     >
       <div
-  className="bg-background rounded-2xl shadow-logistics p-6 min-w-[320px] max-w-lg w-full relative animate-fadein"
-        onClick={e => e.stopPropagation()}
+        className="bg-background rounded-2xl shadow-logistics p-6 min-w-[320px] max-w-lg w-full relative animate-fadein"
+        onClick={(e) => e.stopPropagation()}
       >
         {onClose && (
           <button
@@ -29,7 +29,11 @@ export function Modal({ open, onClose, title, children, className = '', ...props
             ×
           </button>
         )}
-  {title && <h2 className="text-lg font-heading font-bold mb-4 text-primary tracking-tight">{title}</h2>}
+        {title && (
+          <h2 className="text-lg font-heading font-bold mb-4 text-primary tracking-tight">
+            {title}
+          </h2>
+        )}
         {children}
       </div>
     </div>

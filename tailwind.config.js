@@ -6,8 +6,8 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#FF4500', // logistics orange
-          light: '#FE4B00',   // secondary
-          dark: '#333333',    // neutral
+          light: '#FE4B00', // secondary
+          dark: '#333333', // neutral
         },
         secondary: {
           DEFAULT: '#FE4B00',
@@ -39,8 +39,8 @@ module.exports = {
         logistics: '0 4px 24px 0 rgba(30,64,175,0.08)',
       },
       transitionProperty: {
-        'bg': 'background-color',
-        'colors': 'color, background-color, border-color',
+        bg: 'background-color',
+        colors: 'color, background-color, border-color',
       },
       keyframes: {
         fadein: {
@@ -55,7 +55,7 @@ module.exports = {
           '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
           '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
         },
-        'float': {
+        float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' },
         },
@@ -81,7 +81,7 @@ module.exports = {
         fadein: 'fadein 0.7s ease',
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
         'gradient-x': 'gradient-x 3s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
         'float-slow': 'float-slow 8s ease-in-out infinite',
         'float-reverse': 'float-reverse 5s ease-in-out infinite',
         'bounce-gentle': 'bounce-gentle 4s ease-in-out infinite',

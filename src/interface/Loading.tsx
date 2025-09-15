@@ -10,13 +10,19 @@ export function Spinner({ className = '', size = 32 }: { className?: string; siz
   );
 }
 
-export function Skeleton({ className = '', style = {} }: { className?: string; style?: React.CSSProperties }) {
+export function Skeleton({
+  className = '',
+  style = {},
+}: {
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   return (
-      <div
-        role="presentation"
-        className={`bg-neutral-200 rounded animate-pulse ${className}`}
-        style={style}
-        aria-hidden="true"
-      />
+    <div
+      role="presentation"
+      className={`bg-neutral-200 rounded animate-pulse ${className}`}
+      style={style}
+      aria-hidden="true"
+    />
   );
 }

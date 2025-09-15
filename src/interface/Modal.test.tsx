@@ -6,7 +6,7 @@ describe('Modal', () => {
     render(
       <Modal open title="Test Modal">
         <div>Modal content</div>
-      </Modal>
+      </Modal>,
     );
     expect(screen.getByText('Modal content')).toBeInTheDocument();
     expect(screen.getByText('Test Modal')).toBeInTheDocument();
@@ -15,7 +15,7 @@ describe('Modal', () => {
     render(
       <Modal open={false} title="Hidden">
         <div>Hidden content</div>
-      </Modal>
+      </Modal>,
     );
     expect(screen.queryByText('Hidden content')).not.toBeInTheDocument();
   });

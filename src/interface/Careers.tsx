@@ -9,7 +9,7 @@ const jobs = [
     desc: 'Quản lý toàn bộ hoạt động vận hành, tối ưu quy trình, đảm bảo chất lượng dịch vụ và hiệu quả chi phí.',
     icon: '👨‍💼',
     requirements: ['Kinh nghiệm 3+ năm logistics', 'Kỹ năng lãnh đạo', 'Tiếng Anh giao tiếp'],
-    benefits: ['Lương cạnh tranh', 'Thưởng KPI', 'Bảo hiểm cao cấp']
+    benefits: ['Lương cạnh tranh', 'Thưởng KPI', 'Bảo hiểm cao cấp'],
   },
   {
     title: 'Chuyên viên Kho bãi',
@@ -19,7 +19,7 @@ const jobs = [
     desc: 'Quản lý kho hàng, vận hành WMS, kiểm soát chất lượng, đảm bảo an toàn lao động.',
     icon: '📦',
     requirements: ['Tốt nghiệp Logistics/Kinh tế', 'Am hiểu WMS', 'Cẩn thận, chính xác'],
-    benefits: ['Đào tạo chuyên nghiệp', 'Cơ hội thăng tiến', 'Môi trường năng động']
+    benefits: ['Đào tạo chuyên nghiệp', 'Cơ hội thăng tiến', 'Môi trường năng động'],
   },
   {
     title: 'Điều phối viên Vận tải',
@@ -29,7 +29,7 @@ const jobs = [
     desc: 'Lập kế hoạch vận chuyển, điều phối tài xế, theo dõi hành trình, xử lý sự cố.',
     icon: '🚚',
     requirements: ['Kinh nghiệm vận tải 2+ năm', 'Kỹ năng giao tiếp tốt', 'Làm việc ca đêm'],
-    benefits: ['Thưởng hiệu suất', 'Hỗ trợ xăng xe', 'Team building định kỳ']
+    benefits: ['Thưởng hiệu suất', 'Hỗ trợ xăng xe', 'Team building định kỳ'],
   },
   {
     title: 'Customer Success Specialist',
@@ -39,7 +39,7 @@ const jobs = [
     desc: 'Chăm sóc khách hàng, tư vấn dịch vụ, xử lý khiếu nại, duy trì mối quan hệ lâu dài.',
     icon: '🤝',
     requirements: ['Tiếng Anh tốt', 'Kỹ năng giao tiếp xuất sắc', 'Kinh nghiệm CSKH'],
-    benefits: ['Hoa hồng hấp dẫn', 'Đào tạo kỹ năng', 'Phúc lợi toàn diện']
+    benefits: ['Hoa hồng hấp dẫn', 'Đào tạo kỹ năng', 'Phúc lợi toàn diện'],
   },
   {
     title: 'IT System Analyst',
@@ -49,7 +49,7 @@ const jobs = [
     desc: 'Phát triển và duy trì hệ thống TMS, WMS, tích hợp API, tối ưu quy trình số.',
     icon: '💻',
     requirements: ['Kinh nghiệm .NET/Java 3+ năm', 'Hiểu biết về logistics', 'Database SQL'],
-    benefits: ['Lương cao', 'Laptop và thiết bị', 'Học hỏi công nghệ mới']
+    benefits: ['Lương cao', 'Laptop và thiết bị', 'Học hỏi công nghệ mới'],
   },
   {
     title: 'Sales Executive',
@@ -59,41 +59,41 @@ const jobs = [
     desc: 'Tìm kiếm khách hàng mới, duy trì khách hàng cũ, đạt chỉ tiêu doanh số.',
     icon: '💼',
     requirements: ['Kinh nghiệm sales B2B', 'Kỹ năng thuyết phục', 'Làm việc áp lực cao'],
-    benefits: ['Hoa hồng không giới hạn', 'Thưởng quý/năm', 'Du lịch công ty']
-  }
+    benefits: ['Hoa hồng không giới hạn', 'Thưởng quý/năm', 'Du lịch công ty'],
+  },
 ];
 
 const benefits = [
   {
     icon: '💰',
     title: 'Lương thưởng hấp dẫn',
-    desc: 'Mức lương cạnh tranh + thưởng KPI + thưởng lễ tết'
+    desc: 'Mức lương cạnh tranh + thưởng KPI + thưởng lễ tết',
   },
   {
     icon: '🏥',
     title: 'Bảo hiểm toàn diện',
-    desc: 'BHXH full + Bảo hiểm sức khỏe cao cấp cho nhân viên và gia đình'
+    desc: 'BHXH full + Bảo hiểm sức khỏe cao cấp cho nhân viên và gia đình',
   },
   {
     icon: '📚',
     title: 'Đào tạo phát triển',
-    desc: 'Chương trình đào tạo chuyên nghiệp + Hỗ trợ học tập nâng cao'
+    desc: 'Chương trình đào tạo chuyên nghiệp + Hỗ trợ học tập nâng cao',
   },
   {
     icon: '🌴',
     title: 'Work-Life Balance',
-    desc: '5 ngày làm việc/tuần + Du lịch công ty hàng năm + Team building'
+    desc: '5 ngày làm việc/tuần + Du lịch công ty hàng năm + Team building',
   },
   {
     icon: '🚀',
     title: 'Cơ hội thăng tiến',
-    desc: 'Đường thăng tiến rõ ràng + Cơ hội làm việc quốc tế'
+    desc: 'Đường thăng tiến rõ ràng + Cơ hội làm việc quốc tế',
   },
   {
     icon: '🎯',
     title: 'Môi trường năng động',
-    desc: 'Đội ngũ trẻ trung + Công nghệ hiện đại + Văn hóa học hỏi'
-  }
+    desc: 'Đội ngũ trẻ trung + Công nghệ hiện đại + Văn hóa học hỏi',
+  },
 ];
 
 export default function Careers() {
@@ -106,12 +106,11 @@ export default function Careers() {
           <div className="relative z-10 text-center">
             <h1 className="text-5xl md:text-6xl font-black mb-6">
               Tuyển Dụng
-              <span className="block text-orange-200 text-4xl md:text-5xl mt-2">
-                Nhân Tài
-              </span>
+              <span className="block text-orange-200 text-4xl md:text-5xl mt-2">Nhân Tài</span>
             </h1>
             <p className="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto leading-relaxed mb-8">
-              Gia nhập đội ngũ Iconic Logistics - Nơi tài năng được tỏa sáng và phát triển không giới hạn
+              Gia nhập đội ngũ Iconic Logistics - Nơi tài năng được tỏa sáng và phát triển không
+              giới hạn
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-white text-orange-500 px-8 py-4 rounded-xl font-semibold hover:bg-orange-50 transition-colors">
@@ -129,9 +128,7 @@ export default function Careers() {
       <section className="py-20 bg-gray-50">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Vị Trí Đang Tuyển
-            </h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Vị Trí Đang Tuyển</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Cơ hội nghề nghiệp hấp dẫn tại Iconic Logistics
             </p>
@@ -159,9 +156,7 @@ export default function Careers() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {job.desc}
-                </p>
+                <p className="text-gray-600 mb-4 leading-relaxed">{job.desc}</p>
 
                 <div className="space-y-3 mb-6">
                   <div>
@@ -175,7 +170,7 @@ export default function Careers() {
                       ))}
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-2">Quyền lợi:</h4>
                     <ul className="space-y-1">
@@ -217,12 +212,8 @@ export default function Careers() {
                 className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-orange-50 transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="text-5xl mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {benefit.desc}
-                </p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
               </div>
             ))}
           </div>
@@ -235,28 +226,23 @@ export default function Careers() {
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">Sẵn sàng gia nhập đội ngũ?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Gửi CV của bạn ngay hôm nay và bắt đầu hành trình phát triển sự nghiệp cùng Iconic Logistics
+              Gửi CV của bạn ngay hôm nay và bắt đầu hành trình phát triển sự nghiệp cùng Iconic
+              Logistics
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto text-left">
               <div className="bg-gray-800 rounded-xl p-6">
                 <h3 className="font-bold mb-2">📧 Gửi CV qua Email</h3>
-                <p className="text-gray-300 text-sm mb-3">
-                  Gửi CV và thư xin việc tới
-                </p>
+                <p className="text-gray-300 text-sm mb-3">Gửi CV và thư xin việc tới</p>
                 <p className="text-orange-400 font-semibold">hr@iconiclogistics.vn</p>
               </div>
               <div className="bg-gray-800 rounded-xl p-6">
                 <h3 className="font-bold mb-2">📞 Liên hệ trực tiếp</h3>
-                <p className="text-gray-300 text-sm mb-3">
-                  Hotline tuyển dụng
-                </p>
+                <p className="text-gray-300 text-sm mb-3">Hotline tuyển dụng</p>
                 <p className="text-orange-400 font-semibold">1900-ICONIC</p>
               </div>
             </div>
             <div className="mt-8">
-              <button className="btn-primary mr-4">
-                📄 Ứng tuyển online
-              </button>
+              <button className="btn-primary mr-4">📄 Ứng tuyển online</button>
               <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-colors">
                 📋 Tải mẫu CV
               </button>

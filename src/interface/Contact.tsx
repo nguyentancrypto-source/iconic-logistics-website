@@ -4,35 +4,23 @@ const contactInfo = [
   {
     icon: '🏢',
     title: 'Trụ sở chính',
-    details: [
-      '123 Đường Logistics, Quận 7',
-      'TP. Hồ Chí Minh, Việt Nam'
-    ]
+    details: ['123 Đường Logistics, Quận 7', 'TP. Hồ Chí Minh, Việt Nam'],
   },
   {
     icon: '📞',
     title: 'Hotline 24/7',
-    details: [
-      '1900-ICONIC (1900-426642)',
-      '028-3456-7890'
-    ]
+    details: ['1900-ICONIC (1900-426642)', '028-3456-7890'],
   },
   {
     icon: '📧',
     title: 'Email',
-    details: [
-      'contact@iconiclogistics.vn',
-      'support@iconiclogistics.vn'
-    ]
+    details: ['contact@iconiclogistics.vn', 'support@iconiclogistics.vn'],
   },
   {
     icon: '⏰',
     title: 'Giờ làm việc',
-    details: [
-      'Thứ 2 - Thứ 6: 8:00 - 18:00',
-      'Thứ 7: 8:00 - 12:00'
-    ]
-  }
+    details: ['Thứ 2 - Thứ 6: 8:00 - 18:00', 'Thứ 7: 8:00 - 12:00'],
+  },
 ];
 
 const offices = [
@@ -40,20 +28,20 @@ const offices = [
     city: 'TP. Hồ Chí Minh',
     address: '123 Đường Logistics, Quận 7',
     phone: '028-3456-7890',
-    email: 'hcm@iconiclogistics.vn'
+    email: 'hcm@iconiclogistics.vn',
   },
   {
     city: 'Hà Nội',
     address: '456 Phố Vận Tải, Quận Cầu Giấy',
     phone: '024-3654-0987',
-    email: 'hn@iconiclogistics.vn'
+    email: 'hn@iconiclogistics.vn',
   },
   {
     city: 'Đà Nẵng',
     address: '789 Đường Hàng Hải, Quận Hải Châu',
     phone: '0236-3789-0123',
-    email: 'dn@iconiclogistics.vn'
-  }
+    email: 'dn@iconiclogistics.vn',
+  },
 ];
 
 export default function Contact() {
@@ -66,12 +54,11 @@ export default function Contact() {
           <div className="relative z-10 text-center">
             <h1 className="text-5xl md:text-6xl font-black mb-6">
               Liên Hệ
-              <span className="block text-orange-200 text-4xl md:text-5xl mt-2">
-                Với Chúng Tôi
-              </span>
+              <span className="block text-orange-200 text-4xl md:text-5xl mt-2">Với Chúng Tôi</span>
             </h1>
             <p className="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto leading-relaxed">
-              Đội ngũ chuyên gia Iconic Logistics sẵn sàng tư vấn giải pháp logistics tối ưu cho doanh nghiệp của bạn
+              Đội ngũ chuyên gia Iconic Logistics sẵn sàng tư vấn giải pháp logistics tối ưu cho
+              doanh nghiệp của bạn
             </p>
           </div>
         </Container>
@@ -90,7 +77,9 @@ export default function Contact() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{info.title}</h3>
                 <div className="space-y-2">
                   {info.details.map((detail, idx) => (
-                    <p key={idx} className="text-gray-600">{detail}</p>
+                    <p key={idx} className="text-gray-600">
+                      {detail}
+                    </p>
                   ))}
                 </div>
               </div>
@@ -137,9 +126,7 @@ export default function Contact() {
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors resize-none"
                 ></textarea>
-                <button className="btn-primary w-full">
-                  📤 Gửi yêu cầu tư vấn
-                </button>
+                <button className="btn-primary w-full">📤 Gửi yêu cầu tư vấn</button>
               </form>
               <p className="text-sm text-gray-500 mt-4">
                 * Chúng tôi sẽ liên hệ lại trong vòng 2 giờ làm việc
@@ -156,9 +143,7 @@ export default function Contact() {
                     <p className="text-sm">123 Đường Logistics, Quận 7, TP.HCM</p>
                   </div>
                 </div>
-                <button className="btn-secondary w-full">
-                  🧭 Xem chỉ đường
-                </button>
+                <button className="btn-secondary w-full">🧭 Xem chỉ đường</button>
               </div>
 
               <div className="bg-white rounded-2xl p-8 shadow-logistics-card">
@@ -191,7 +176,10 @@ export default function Contact() {
               <a href="tel:1900426642" className="btn-primary">
                 📞 Gọi ngay: 1900-ICONIC
               </a>
-              <a href="mailto:contact@iconiclogistics.vn" className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+              <a
+                href="mailto:contact@iconiclogistics.vn"
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-colors"
+              >
                 📧 Gửi email
               </a>
             </div>

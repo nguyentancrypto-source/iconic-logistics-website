@@ -4,30 +4,30 @@ const stats = [
   { number: '500+', label: 'Khách hàng tin tưởng' },
   { number: '50+', label: 'Tỉnh thành phủ sóng' },
   { number: '10+', label: 'Năm kinh nghiệm' },
-  { number: '99.8%', label: 'Độ hài lòng khách hàng' }
+  { number: '99.8%', label: 'Độ hài lòng khách hàng' },
 ];
 
 const values = [
   {
     icon: '🎯',
     title: 'Chuyên nghiệp',
-    desc: 'Đội ngũ giàu kinh nghiệm, quy trình chuẩn hóa, cam kết chất lượng dịch vụ cao nhất'
+    desc: 'Đội ngũ giàu kinh nghiệm, quy trình chuẩn hóa, cam kết chất lượng dịch vụ cao nhất',
   },
   {
     icon: '💡',
     title: 'Đổi mới',
-    desc: 'Ứng dụng công nghệ tiên tiến, phát triển giải pháp logistics thông minh và hiệu quả'
+    desc: 'Ứng dụng công nghệ tiên tiến, phát triển giải pháp logistics thông minh và hiệu quả',
   },
   {
     icon: '🤝',
     title: 'Tận tâm',
-    desc: 'Đặt lợi ích khách hàng lên hàng đầu, hỗ trợ 24/7, tư vấn giải pháp tối ưu'
+    desc: 'Đặt lợi ích khách hàng lên hàng đầu, hỗ trợ 24/7, tư vấn giải pháp tối ưu',
   },
   {
     icon: '🌱',
     title: 'Bền vững',
-    desc: 'Phát triển bền vững, trách nhiệm với môi trường và cộng đồng xã hội'
-  }
+    desc: 'Phát triển bền vững, trách nhiệm với môi trường và cộng đồng xã hội',
+  },
 ];
 
 export default function About() {
@@ -47,8 +47,8 @@ export default function About() {
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-orange-100 leading-relaxed mb-8">
-                  Đơn vị tiên phong trong lĩnh vực logistics tại Việt Nam với hơn 10 năm kinh nghiệm, 
-                  cung cấp giải pháp toàn diện từ vận chuyển đến quản lý chuỗi cung ứng.
+                  Đơn vị tiên phong trong lĩnh vực logistics tại Việt Nam với hơn 10 năm kinh
+                  nghiệm, cung cấp giải pháp toàn diện từ vận chuyển đến quản lý chuỗi cung ứng.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-white text-orange-500 px-8 py-4 rounded-xl font-semibold hover:bg-orange-50 transition-colors">
@@ -84,9 +84,7 @@ export default function About() {
                 <div className="text-4xl md:text-5xl font-black text-orange-500 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">
-                  {stat.label}
-                </div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -102,16 +100,17 @@ export default function About() {
                 <div className="text-4xl mb-4">🎯</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Sứ mệnh</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Tối ưu hóa chuỗi cung ứng, nâng cao hiệu suất vận hành và trải nghiệm khách hàng 
-                  cho doanh nghiệp Việt Nam thông qua các giải pháp logistics thông minh và đáng tin cậy.
+                  Tối ưu hóa chuỗi cung ứng, nâng cao hiệu suất vận hành và trải nghiệm khách hàng
+                  cho doanh nghiệp Việt Nam thông qua các giải pháp logistics thông minh và đáng tin
+                  cậy.
                 </p>
               </div>
               <div className="bg-white rounded-2xl p-8 shadow-logistics-card hover:shadow-logistics-card border border-gray-100">
                 <div className="text-4xl mb-4">🚀</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Tầm nhìn</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Trở thành đối tác logistics tin cậy hàng đầu khu vực Đông Nam Á, 
-                  dẫn dắt xu hướng chuyển đổi số trong ngành logistics Việt Nam.
+                  Trở thành đối tác logistics tin cậy hàng đầu khu vực Đông Nam Á, dẫn dắt xu hướng
+                  chuyển đổi số trong ngành logistics Việt Nam.
                 </p>
               </div>
             </div>
@@ -137,9 +136,7 @@ export default function About() {
       <section className="py-20 bg-white">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Giá Trị Cốt Lõi
-            </h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Giá Trị Cốt Lõi</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Những giá trị định hướng mọi hoạt động của Iconic Logistics
             </p>
@@ -157,9 +154,7 @@ export default function About() {
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-500 transition-colors">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {value.desc}
-                </p>
+                <p className="text-gray-600 leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>
@@ -175,9 +170,7 @@ export default function About() {
               Cùng Iconic Logistics xây dựng chuỗi cung ứng hiệu quả và phát triển bền vững
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary">
-                🤝 Hợp tác ngay
-              </button>
+              <button className="btn-primary">🤝 Hợp tác ngay</button>
               <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-colors">
                 📋 Tải hồ sơ năng lực
               </button>

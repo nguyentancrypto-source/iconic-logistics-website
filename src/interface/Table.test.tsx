@@ -15,7 +15,7 @@ describe('Table', () => {
             <TableCell>Cell</TableCell>
           </TableRow>
         </tbody>
-      </Table>
+      </Table>,
     );
     expect(screen.getByText('Header')).toBeInTheDocument();
     expect(screen.getByText('Cell')).toBeInTheDocument();

@@ -9,7 +9,7 @@ export function Table({ children, className = '', ...props }: TableProps) {
   return (
     <div className="overflow-x-auto w-full">
       <table
-  className={`min-w-full bg-background rounded-xl shadow-logistics border border-logistics-border text-sm ${className}`}
+        className={`min-w-full bg-background rounded-xl shadow-logistics border border-logistics-border text-sm ${className}`}
         {...props}
       >
         {children}
@@ -18,7 +18,11 @@ export function Table({ children, className = '', ...props }: TableProps) {
   );
 }
 
-export function TableHead({ children, className = '', ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {
+export function TableHead({
+  children,
+  className = '',
+  ...props
+}: React.HTMLAttributes<HTMLTableSectionElement>) {
   return (
     <thead className={`bg-primary text-white font-heading ${className}`} {...props}>
       {children}
@@ -26,7 +30,11 @@ export function TableHead({ children, className = '', ...props }: React.HTMLAttr
   );
 }
 
-export function TableRow({ children, className = '', ...props }: React.HTMLAttributes<HTMLTableRowElement>) {
+export function TableRow({
+  children,
+  className = '',
+  ...props
+}: React.HTMLAttributes<HTMLTableRowElement>) {
   return (
     <tr className={`border-b hover:bg-accent/20 transition-colors ${className}`} {...props}>
       {children}
@@ -34,7 +42,11 @@ export function TableRow({ children, className = '', ...props }: React.HTMLAttri
   );
 }
 
-export function TableCell({ children, className = '', ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {
+export function TableCell({
+  children,
+  className = '',
+  ...props
+}: React.TdHTMLAttributes<HTMLTableCellElement>) {
   return (
     <td className={`p-2 ${className}`} {...props}>
       {children}

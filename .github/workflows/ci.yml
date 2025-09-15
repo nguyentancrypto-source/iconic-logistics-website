@@ -5,6 +5,12 @@ on:
     branches: ['dev', 'main', 'ui-ux/**', 'feat/ui-ux-*']
   pull_request:
     branches: ['dev', 'main']
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: "Branch to run CI against (optional)"
+        required: false
+        default: ""
 
 jobs:
   build:
@@ -88,8 +94,31 @@ jobs:
             - Xem chi tiết artifact [axe-report.json](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
       # Telegram notifications
-      - name: Notify Telegram on failure
-        if: failure()
+      - name: Collect PR details (title, files)
+        if: success() && github.event_name == 'pull_request'
+        id: changed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const number = context.payload.pull_request.number;
+            const title = context.payload.pull_request.title;
+            const url = context.payload.pull_request.html_url;
+            let files = [];
+            const per_page = 100;
+            for (let page = 1; page <= 10; page++) {
+              const res = await github.rest.pulls.listFiles({ owner, repo, pull_number: number, per_page, page });
+              files = files.concat(res.data);
+              if (res.data.length < per_page) break;
+            }
+            const top = files.slice(0, 10).map(f => `- ${f.filename} (+${f.additions}/-${f.deletions})`).join('\n');
+            const more = files.length > 10 ? `\n… and ${files.length - 10} more files` : '';
+            core.setOutput('title', title);
+            core.setOutput('url', url);
+            core.setOutput('files', top + more);
+      - name: Notify Telegram on failure (PR, final attempt)
+        if: failure() && github.event_name == 'pull_request' && github.run_attempt >= 3
         env:
           BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -98,7 +127,8 @@ jobs:
             echo "Telegram secrets not set, skipping notification."
             exit 0
           fi
-          TEXT="🔴 CI Failed\nRepo: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nEvent: ${{ github.event_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          TEXT="🔴 CI Failed (final attempt) for PR #$PR_NUMBER\nRepo: ${{ github.repository }}\nBranch: ${{ github.head_ref || github.ref_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nNote: Auto-retried and still failing."
           curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 
       - name: Notify Telegram on success (PR only)
@@ -112,5 +142,8 @@ jobs:
             exit 0
           fi
           PR_NUMBER=${{ github.event.pull_request.number }}
-          TEXT="🟢 CI Green for PR #$PR_NUMBER\nRepo: ${{ github.repository }}\nBranch: ${{ github.head_ref || github.ref_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nStatus: Ready to auto-merge when checks complete."
+          PR_TITLE=${{ steps.changed.outputs.title }}
+          PR_URL=${{ steps.changed.outputs.url }}
+          FILES=$(echo "${{ steps.changed.outputs.files }}")
+          TEXT="🟢 CI Green for PR #$PR_NUMBER — $PR_TITLE\nRepo: ${{ github.repository }}\nBranch: ${{ github.head_ref || github.ref_name }}\nPR: $PR_URL\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nChanges:\n$FILES\nStatus: Ready to auto-merge when checks complete."
           curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"

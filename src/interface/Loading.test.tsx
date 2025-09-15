@@ -13,6 +13,6 @@ describe('Spinner', () => {
 describe('Skeleton', () => {
   it('renders with custom class', () => {
     render(<Skeleton className="test-skeleton" />);
-  expect(screen.getByRole('presentation', { hidden: true })).toHaveClass('test-skeleton');
+    expect(screen.getByRole('presentation', { hidden: true })).toHaveClass('test-skeleton');
   });
 });
