@@ -7,7 +7,7 @@ export default function Home() {
   const [modal, setModal] = useState(false);
   const [loading, setLoading] = useState(false);
   return (
-    <div className="p-4 md:p-8 min-h-[80vh] bg-gradient-to-br from-primary-light via-accent to-background-DEFAULT">
+  <div className="p-4 md:p-8 min-h-[80vh] bg-gradient-to-br from-primary-light via-accent to-background">
       <section className="max-w-5xl mx-auto text-center space-y-8">
         <h1 className="text-5xl md:text-6xl font-extrabold text-primary drop-shadow-sm animate-fadein tracking-tight">
           Nâng Tầm Chuỗi Cung Ứng Việt Nam
@@ -63,7 +63,7 @@ export default function Home() {
         </Modal>
         <Card className="mt-8 text-left bg-gradient-to-br from-white to-orange-50 border-l-4 border-blue-400 animate-fadein">
           <h2 className="text-xl font-bold text-blue-700 mb-2">Tại sao chọn Iconic Logistics?</h2>
-          <ul className="list-disc pl-6 space-y-1 text-gray-700">
+          <ul className="list-disc pl-6 space-y-1 text-neutral-700">
             <li>Đội ngũ chuyên nghiệp, tận tâm, am hiểu thị trường Việt Nam.</li>
             <li>Hệ thống quản lý kho bãi, vận chuyển hiện đại, realtime tracking.</li>
             <li>Giá cả cạnh tranh, minh bạch, tối ưu cho từng loại hình doanh nghiệp.</li>

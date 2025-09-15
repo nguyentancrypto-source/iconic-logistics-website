@@ -35,13 +35,13 @@ export default function Services() {
         {services.map((s) => (
           <Card
             key={s.title}
-            className="flex flex-col items-center text-center gap-3 border-t-4 border-primary hover:scale-105 transition-transform duration-200 animate-fadein bg-white"
+            className="flex flex-col items-center text-center gap-3 border-t-4 border-primary hover:scale-105 transition-transform duration-200 animate-fadein bg-background"
           >
             <span className="text-5xl mb-2">{s.icon}</span>
             <img
               src={s.img}
               alt={s.title}
-              className="rounded-xl w-full h-28 object-cover border border-accent"
+              className="rounded-xl w-full h-28 object-cover border-2 border-accent"
               loading="lazy"
             />
             <h2 className="text-lg font-bold text-primary">{s.title}</h2>

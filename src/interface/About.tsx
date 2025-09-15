@@ -13,7 +13,7 @@ export default function About() {
           className="rounded-xl shadow-md w-full max-w-xs object-cover border-4 border-blue-100"
           loading="lazy"
         />
-        <div className="space-y-3 text-gray-700 text-lg">
+  <div className="space-y-3 text-neutral-700 text-lg">
           <p>
             <b>Iconic Logistics</b> là đơn vị tiên phong trong lĩnh vực logistics tại Việt Nam, cung
             cấp giải pháp vận chuyển, kho bãi, quản lý đơn hàng và tracking hiện đại.
@@ -29,7 +29,7 @@ export default function About() {
       </div>
       <Card className="bg-gradient-to-br from-white to-blue-50 border-l-4 border-orange-400 animate-fadein">
         <h2 className="text-xl font-bold text-orange-600 mb-2">Giá trị cốt lõi</h2>
-        <ul className="list-disc pl-6 space-y-1 text-gray-700">
+  <ul className="list-disc pl-6 space-y-1 text-neutral-700">
           <li>Chuyên nghiệp - Tận tâm - Minh bạch</li>
           <li>Đổi mới công nghệ, ứng dụng quản lý thông minh</li>
           <li>Đặt lợi ích khách hàng lên hàng đầu</li>

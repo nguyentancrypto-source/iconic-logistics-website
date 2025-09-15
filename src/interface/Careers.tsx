@@ -40,12 +40,12 @@ export default function Careers() {
               <span className="text-3xl">{j.icon}</span>
               <div>
                 <div className="font-bold text-blue-700 text-lg">{j.title}</div>
-                <div className="text-gray-600 text-sm">
+                <div className="text-neutral-600 text-sm">
                   {j.location} • {j.type}
                 </div>
               </div>
             </div>
-            <div className="text-gray-700 text-sm mb-2">{j.desc}</div>
+            <div className="text-neutral-700 text-sm mb-2">{j.desc}</div>
             <Button className="bg-blue-600 text-white hover:bg-blue-700 w-max self-end">
               Ứng tuyển
             </Button>
@@ -53,7 +53,7 @@ export default function Careers() {
         ))}
       </ul>
       <Card className="mt-8 text-center animate-fadein">
-        <div className="text-gray-700">
+  <div className="text-neutral-700">
           Gửi CV về <b>hr@iconiclogistics.vn</b> hoặc liên hệ hotline <b>0900 000 000</b> để biết
           thêm chi tiết.
         </div>

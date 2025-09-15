@@ -14,7 +14,7 @@ export default function Contact() {
           loading="lazy"
         />
         <Card className="flex-1 bg-gradient-to-br from-white to-blue-50 border-l-4 border-blue-400 animate-fadein">
-          <div className="text-gray-700 text-lg space-y-1">
+          <div className="text-neutral-700 text-lg space-y-1">
             <div>
               <b>Địa chỉ:</b> 123 Đường Logistics, Quận 7, TP.HCM
             </div>
@@ -38,7 +38,7 @@ export default function Contact() {
           <textarea className="w-full border rounded px-3 py-2" placeholder="Nội dung" rows={4} />
           <Button className="bg-orange-500 text-white hover:bg-orange-600">Gửi</Button>
         </form>
-        <div className="text-xs text-gray-500 mt-2">* Chúng tôi sẽ phản hồi trong vòng 24h.</div>
+  <div className="text-xs text-neutral-500 mt-2">* Chúng tôi sẽ phản hồi trong vòng 24h.</div>
       </Card>
     </div>
   );

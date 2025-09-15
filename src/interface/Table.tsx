@@ -9,7 +9,7 @@ export function Table({ children, className = '', ...props }: TableProps) {
   return (
     <div className="overflow-x-auto w-full">
       <table
-        className={`min-w-full bg-white rounded-xl shadow-logistics border border-logistics-border text-sm ${className}`}
+  className={`min-w-full bg-background rounded-xl shadow-logistics border border-logistics-border text-sm ${className}`}
         {...props}
       >
         {children}
@@ -20,7 +20,7 @@ export function Table({ children, className = '', ...props }: TableProps) {
 
 export function TableHead({ children, className = '', ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {
   return (
-    <thead className={`bg-primary text-white ${className}`} {...props}>
+    <thead className={`bg-primary text-white font-heading ${className}`} {...props}>
       {children}
     </thead>
   );
@@ -28,7 +28,7 @@ export function TableHead({ children, className = '', ...props }: React.HTMLAttr
 
 export function TableRow({ children, className = '', ...props }: React.HTMLAttributes<HTMLTableRowElement>) {
   return (
-    <tr className={`border-b hover:bg-logistics-card transition-colors ${className}`} {...props}>
+    <tr className={`border-b hover:bg-accent/20 transition-colors ${className}`} {...props}>
       {children}
     </tr>
   );

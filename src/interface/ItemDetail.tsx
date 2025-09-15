@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Spinner } from './Loading';
 
 interface Item {
   id: string;
@@ -30,14 +31,14 @@ export default function ItemDetail() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <div className="p-8 text-center">Đang tải...</div>;
+  if (loading) return <div className="p-8 flex flex-col items-center justify-center"><Spinner size={32} /><span className="mt-2 text-neutral-600">Đang tải chi tiết hàng hóa...</span></div>;
   if (error) return <div className="p-8 text-center text-red-600">{error}</div>;
   if (!item) return null;
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded shadow mt-8">
+  <div className="max-w-2xl mx-auto p-6 bg-background rounded shadow-logistics mt-8 border border-logistics-border">
       <h1 className="text-2xl font-bold mb-2">{item.name}</h1>
-      <div className="mb-2 text-gray-600">
+  <div className="mb-2 text-neutral-700">
         Mã hàng: <span className="font-mono">{item.code}</span>
       </div>
       <div className="mb-2">
@@ -60,7 +61,7 @@ export default function ItemDetail() {
         {item.description || <span className="italic text-gray-400">Chưa có mô tả</span>}
       </div>
       <div className="flex gap-3">
-        <Link to="/items" className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">
+  <Link to="/items" className="px-4 py-2 bg-accent text-white rounded hover:bg-primary transition-colors">
           ← Quay lại danh sách
         </Link>
         <a
