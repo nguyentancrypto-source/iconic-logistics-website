@@ -48,15 +48,15 @@ const services = [
 export function Services() {
   return (
     <div className="min-h-screen">
-      <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <Container>
           <div className="relative z-10 text-center">
             <h1 className="text-5xl md:text-6xl font-black mb-6 text-white">
               Dịch Vụ Logistics
-              <span className="block text-orange-200 text-4xl md:text-5xl mt-2">Chuyên Nghiệp</span>
+              <span className="block text-accent-200 text-4xl md:text-5xl mt-2">Chuyên Nghiệp</span>
             </h1>
-            <p className="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto leading-relaxed">
               Giải pháp logistics toàn diện từ vận chuyển, kho bãi đến tư vấn tối ưu hóa chuỗi cung
               ứng
             </p>
@@ -64,11 +64,11 @@ export function Services() {
         </Container>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-neutral-50">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Dịch Vụ Của Chúng Tôi</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-neutral-900 mb-4">Dịch Vụ Của Chúng Tôi</h2>
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Iconic Logistics cung cấp đầy đủ các dịch vụ logistics chuyên nghiệp
             </p>
           </div>
@@ -77,7 +77,7 @@ export function Services() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl shadow-logistics-card hover:shadow-logistics-card border border-gray-100 overflow-hidden transition-all duration-500 hover:-translate-y-2"
+                className="group bg-white rounded-2xl shadow-logistics-card hover:shadow-logistics-card-hover border border-neutral-100 overflow-hidden transition-all duration-500 hover:-translate-y-2"
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -90,15 +90,15 @@ export function Services() {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-500 transition-colors">
+                  <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary-500 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{service.desc}</p>
+                  <p className="text-neutral-600 mb-4 leading-relaxed">{service.desc}</p>
 
                   <div className="space-y-2 mb-6">
                     {service.features.map((feature: string, idx: number) => (
-                      <div key={idx} className="flex items-center text-sm text-gray-700">
-                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 flex-shrink-0"></div>
+                      <div key={idx} className="flex items-center text-sm text-neutral-700">
+                        <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 flex-shrink-0"></div>
                         {feature}
                       </div>
                     ))}
@@ -114,18 +114,18 @@ export function Services() {
         </Container>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-primary-500 to-secondary-600 text-white">
         <Container>
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">Sẵn sàng hợp tác cùng chúng tôi?</h2>
-            <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
               Liên hệ ngay để được tư vấn miễn phí và nhận báo giá tốt nhất cho doanh nghiệp của bạn
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-orange-500 px-8 py-4 rounded-xl font-semibold hover:bg-orange-50 transition-colors">
+              <button className="bg-white text-primary-500 px-8 py-4 rounded-xl font-semibold hover:bg-primary-50 transition-colors">
                 📞 Gọi ngay: 1900-ICONIC
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-500 transition-colors">
+              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-primary-500 transition-colors">
                 📧 Gửi yêu cầu tư vấn
               </button>
             </div>
