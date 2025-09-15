@@ -1,0 +1,31 @@
+name: CI Auto Re-run on Failure (UI/UX)
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  rerun:
+    if: >-
+      ${{ github.event.workflow_run.conclusion == 'failure' &&
+          (startsWith(github.event.workflow_run.head_branch, 'ui-ux/') ||
+           startsWith(github.event.workflow_run.head_branch, 'feat/ui-ux-')) &&
+          github.event.workflow_run.run_attempt < 3 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Re-run failed CI
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            core.info(`Re-running CI for run ${run.id} (attempt ${run.run_attempt}) on branch ${run.head_branch}`);
+            await github.request('POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun', {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: run.id
+            });

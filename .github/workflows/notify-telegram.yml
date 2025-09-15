@@ -1,0 +1,22 @@
+name: Notify Telegram on PR events
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  notify:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram message (PR merged)
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$BOT_TOKEN" ] || [ -z "$CHAT_ID" ]; then
+            echo "Telegram secrets not set, skipping notification."
+            exit 0
+          fi
+          TEXT="🟢 PR merged to main\nRepo: ${{ github.repository }}\nPR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}\nBranch: ${{ github.event.pull_request.head.ref }} → main\nActor: ${{ github.actor }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
