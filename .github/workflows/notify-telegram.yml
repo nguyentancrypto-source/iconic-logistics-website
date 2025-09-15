@@ -9,6 +9,24 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
+      - name: Collect merged PR files
+        id: files
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const number = context.payload.pull_request.number;
+            let files = [];
+            const per_page = 100;
+            for (let page = 1; page <= 10; page++) {
+              const res = await github.rest.pulls.listFiles({ owner, repo, pull_number: number, per_page, page });
+              files = files.concat(res.data);
+              if (res.data.length < per_page) break;
+            }
+            const top = files.slice(0, 10).map(f => `- ${f.filename} (+${f.additions}/-${f.deletions})`).join('\n');
+            const more = files.length > 10 ? `\n… and ${files.length - 10} more files` : '';
+            core.setOutput('files', top + more);
       - name: Send Telegram message (PR merged)
         env:
           BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -18,5 +36,6 @@ jobs:
             echo "Telegram secrets not set, skipping notification."
             exit 0
           fi
-          TEXT="🟢 PR merged to main\nRepo: ${{ github.repository }}\nPR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}\nBranch: ${{ github.event.pull_request.head.ref }} → main\nActor: ${{ github.actor }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          FILES=$(echo "${{ steps.files.outputs.files }}")
+          TEXT="🟢 PR merged to main\nRepo: ${{ github.repository }}\nPR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}\nBranch: ${{ github.event.pull_request.head.ref }} → main\nActor: ${{ github.actor }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nChanges:\n$FILES"
           curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
