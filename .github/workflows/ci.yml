@@ -18,9 +18,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - name: Clear TypeScript cache
-        run: rm -rf .tsbuildinfo && rm -rf dist && rm -rf node_modules/.vite
+      - name: Clean and install dependencies
+        run: |
+          rm -rf node_modules
+          rm -rf package-lock.json
+          npm install
+      - name: Clear all caches
+        run: |
+          rm -rf .tsbuildinfo
+          rm -rf dist
+          rm -rf node_modules/.vite
+          rm -rf node_modules/.cache
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
