@@ -16,190 +16,27 @@ Handy Links
 
 ---
 
-# �📊 PROJECT REPORT SUMMARY - Iconic Logistics Website
+# 📊 REPORT SUMMARY - Iconic Logistics Website (Freight Forwarder)
 
-**Generated:** September 15, 2025 - 09:00 GMT+7 (ICT)
-**Project:** Iconic Logistics Website  
-**Repository:** nguyentancrypto-source/iconic-logistics-website  
-**Current Branch:** chore/ui-theme-plan (feature branch)
+## 1. Project Direction (2025-09-15)
+- Website chuyển hướng thành tin tức & dịch vụ forwarder (bán cước quốc tế, hải quan, CO, FYTO...)
+- Không còn dịch vụ transport, không nhấn mạnh kho bãi, xe tải, vận chuyển nội địa kiểu truyền thống
+- Ưu tiên UI/UX chuyên nghiệp, hiện đại, tối ưu cho doanh nghiệp xuất nhập khẩu
 
----
+## 2. Progress
+- [x] Logistics theme UI/UX hoàn thiện, đồng bộ màu sắc, typography, shadow
+- [x] Blog/news system: trang danh sách, chi tiết, filter, mock data ngành forwarder
+- [x] Đã thêm route Blog, BlogDetail, navigation mới
+- [x] Responsive, animation, loading state cơ bản
+- [ ] Đang chuẩn bị refactor lại toàn bộ content, dịch vụ, blog, hero section cho đúng ngành forwarder
+- [ ] Sắp triển khai admin dashboard (CRUD bài viết, dịch vụ)
 
-## 🎯 PROJECT OVERVIEW
+## 3. Next Steps
+- Refactor toàn bộ content: dịch vụ forwarder, blog, contact, careers
+- Tạo trang dịch vụ forwarder (bán cước, hải quan, CO, FYTO...)
+- Tối ưu UI/UX: navigation, form liên hệ, loading/error state, animation
+- Xây dựng admin dashboard: đăng/chỉnh sửa bài viết, dịch vụ
+- Đảm bảo CI/CD, test, lint, auto deploy hoạt động ổn định
 
-**Objective:** Create a modern logistics website with Clean Architecture, featuring React frontend, Express backend, and comprehensive CI/CD pipeline.
-
-**Tech Stack Implemented:**
-
-- **Frontend:** React 18, Vite, TypeScript, Tailwind CSS v4, React Router
-- **Backend:** Express.js (basic server setup)
-- **Testing:** Vitest, jsdom, Testing Library
-- **CI/CD:** GitHub Actions, GitHub Pages auto-deploy
-- **Code Quality:** ESLint 9, TypeScript strict mode
-
----
-
-## 📈 CURRENT STATUS (GMT+7: September 15, 2025)
-
-### ✅ COMPLETED PHASES
-
-**Phase 1: Foundation Setup** (100% Complete) - ✅ Repository initialization, React 18 + Vite + TypeScript, Tailwind CSS v4, 5 interface pages, React Router, basic navigation, responsive design
-
-**Phase 2: Development Environment** (100% Complete) - ✅ ESLint 9 flat config, TypeScript strict, npm scripts, Vitest, GitHub Actions CI, GitHub Pages auto-deploy
-
-**Phase 3: DevOps & Deployment** (95% Complete) - ✅ CI workflow: typecheck, lint, test, build, deploy - ✅ Branch protection, artifact handling - 🟡 5% còn lại: enforce required status checks
-
-### 🟡 IN PROGRESS
-
-**Documentation Phase** (60% Complete) - ✅ BACKLOG.md - Đã tổng hợp backlog, phân loại task - 🟡 REPORT_SUMMARY.md - Đang cập nhật trạng thái, tiến độ, phase, task còn lại - ⏭️ README.md - Sẽ bổ sung hướng dẫn sử dụng, cấu trúc thư mục
-
-### ⏭️ PENDING PHASES & TODO
-
-**Phase 4: Backend Infrastructure** (30% Complete) - ✅ Express.js server setup, basic health endpoints, CORS, middleware, env config - ⏭️ Future: Business logic APIs as needed
-
-**Phase 5: Clean Architecture Implementation** (0% Complete) - ⏭️ Domain entities, repository pattern, use cases (future features)
-
-**Phase 6: Frontend Enhancement** (70% Complete) - ✅ Basic routing, navigation, logistics theme, UI components, loading/error states - ⏭️ Advanced features: realtime search, pagination, animations
-
----
-
-## 📊 METRICS & STATISTICS
-
-**Development Velocity:** - **Start Date:** September 14, 2025 (GMT+7) - **Time Invested:** ~6 hours - **Commits:** 12 feature commits (dev, chore/ui-theme-plan) - **Files Created:** 30+ config & source files - **Lines of Code:** ~1200 LOC (excluding node_modules)
-
-**Quality Metrics:** - **TypeScript Coverage:** 100% (all files typed) - **Test Coverage:** Basic smoke test, cần bổ sung unit/integration test - **CI Success Rate:** 100% (all builds passing) - **Linting:** ESLint strict, Prettier, EditorConfig
-
-**Technical Debt:** - **Low:** Foundation tốt, kiến trúc rõ ràng, tooling hiện đại - **Areas for Improvement:** Thiếu nội dung thực tế, UI/UX chưa hoàn thiện, thiếu test coverage - **Risk Level:** Low - solid architecture foundation
-
----
-
-## 🚧 CURRENT CHALLENGES & BLOCKERS
-
-**Resolved Issues:**
-
-- ✅ Tailwind CSS v4 PostCSS integration (required @tailwindcss/postcss)
-- ✅ TypeScript configuration conflicts (tsconfig.json structure)
-- ✅ GitHub Pages deployment base path configuration
-- ✅ ESLint 9 flat config compatibility
-
-**Active Challenges:** - 🟡 Content still needs more real-world examples and images - 🟡 Need more comprehensive test coverage for components - 🟡 Advanced features and animations pending
-
-**Upcoming Risks:** - ⚠️ Tối ưu hiệu năng cho Pages, bundle size - ⚠️ UI/UX chưa đồng bộ, thiếu polish
-
----
-
-## 🎯 NEXT SPRINT GOALS (Week of Sept 15-21, 2025)
-
-**Priority 1: Documentation & Content** 1. Hoàn thiện REPORT_SUMMARY.md, README.md 2. Bổ sung nội dung thực tế, hình ảnh, CTA cho các trang
-
-**Priority 2: UI/UX Polish** 1. Thiết kế theme logistics chuyên nghiệp (màu sắc, font, icon) 2. Chuẩn hóa component library (Button, Card, Modal, Table) 3. Loading/Error state, animation chuyển trang
-
-**Priority 3: Advanced Features & Testing** 1. Add advanced UI interactions and animations 2. Comprehensive unit test, integration test, E2E test coverage
-
----
-
-## 📞 STAKEHOLDER COMMUNICATION
-
-**Development Team Status:** ✅ On Track  
-**Timeline Adherence:** ✅ Meeting Expectations  
-**Budget Impact:** ✅ Within Scope (Open Source)  
-**Risk Assessment:** 🟡 Low-Medium (Technical Implementation)
-
-**Next Review:** September 21, 2025 (GMT+7)  
-**Deliverable:** Polished logistics website with advanced UI/UX features
-
----
-
-**Report Generated By:** GitHub Copilot
-
-**Last Updated:** September 15, 2025 - 09:00 GMT+7  
-**Next Update:** September 21, 2025 - Weekly Sprint Review
-
----
-
-## 📝 Update Log (GMT+7)
-
-- 14/09/2025 16:32:14 — Backend Express server setup, basic health endpoints, Prettier + EditorConfig, ESLint strict in CI, logistics theme implementation, nodemon watch.
-- 14/09/2025 16:52:01 — Mở PR dev→main và merge để kích hoạt triển khai GitHub Pages; cập nhật workflow thêm `actions/configure-pages@v5`.
-- 14/09/2025 16:54:54 — Hoàn tất Phase 2 (Development Environment): đã thêm Prettier + EditorConfig, lint strict trong CI.
-- 14/09/2025 16:56:10 — Deploy to GitHub Pages: SUCCESS (workflow "Deploy to GitHub Pages" trên nhánh main hoàn tất).
-- 14/09/2025 17:00:57 — Cập nhật nội dung các trang Home/About/Services/Contact/Careers (UI cơ bản) và thêm badges CI/Pages vào README.
-- 14/09/2025 17:10:36 — Mở PR #6 (dev→main), sửa test hỏng do thay đổi copy Home, CI xanh, merge và deploy Pages: SUCCESS.
-
----
-
-## 📌 CẬP NHẬT MỚI — 15/09/2025 (GMT+7)
-
-### Tóm tắt nhanh
-- UI/UX: Nâng cấp hero section hiện đại (dark, gradient động, glassmorphism), stats, CTA, mock dashboard; thêm animations vào Tailwind và global CSS.
-- CI/CD: Cứng hoá pipeline với retry, auto-rerun, auto-fix, auto-rebase; thu gọn thông báo Telegram; tự động PR và auto-merge khi CI xanh; giữ nguyên bảo vệ nhánh main.
-- Điều khiển từ xa: Bổ sung 2 kênh giao task không cần Codespaces:
-	- Telegram Bot theo lịch: tạo task/branch, kích hoạt CI, xem trạng thái.
-	- Slash commands trong comment PR: tương tự Telegram ngay trong GitHub.
-
-### Chi tiết thay đổi
-1) UI/UX & Frontend
-- `src/interface/Home.tsx`: Thiết kế lại hero (orbs động, grid, gradient heading), thẻ stats, CTA, mock dashboard; sửa lỗi JSX nhỏ gây hỏng lint/CI.
-- `tailwind.config.js`: Thêm keyframes/animations: gradient-x, fade-in-up, float/slow/reverse, bounce-gentle, spin-slow.
-- `src/index.css`: Thêm utilities: `bg-grid-pattern`, `animate-gradient-x`, `animate-fadeInUp`, lớp `glass`, delays.
-
-2) CI/CD & DevOps
-- `.github/workflows/ci.yml`:
-	- Build + test + typecheck + lint + Lighthouse + a11y (axe) với retry bước quan trọng.
-	- Thu gọn thông báo Telegram: chỉ báo đỏ khi PR run và ở lần thử cuối; báo xanh kèm PR title và danh sách file thay đổi (top 10).
-	- Cho phép `workflow_dispatch` để chạy CI từ Actions UI.
-- Auto PR & Auto Merge:
-	- `.github/workflows/ui-ux-autopr.yml`: Tự tạo/tái sử dụng PR từ nhánh `ui-ux/*` vào `main`, bật auto-merge (squash) khi CI xanh.
-- Ổn định & Tự phục hồi:
-	- `.github/workflows/ci-auto-rerun.yml`: Tự rerun CI tối đa 3 lần cho nhánh `ui-ux/**` khi fail.
-	- `.github/workflows/auto-rebase-ui-ux.yml`: Tự rebase nhánh UI/UX lên `main` để tránh stale-branch.
-- Auto-fix & Push không tương tác:
-	- `.github/workflows/auto-fix-style.yml`: Tự chạy ESLint/Prettier fix trên `ui-ux/**` (bỏ qua `.github/workflows/**`), push bằng `BOT_PAT` nếu có; fallback `GITHUB_TOKEN`.
-- Thông báo & Triển khai:
-	- `.github/workflows/notify-telegram.yml`: Khi PR merge vào `main`, gửi Telegram “merged” kèm PR title và file thay đổi (top 10).
-	- `.github/workflows/pages.yml`: Deploy GitHub Pages khi `main` cập nhật.
-- Tiện ích không cần lệnh cục bộ:
-	- `.github/workflows/bot-commit.yml`: Nút “Run workflow” để bot tạo commit kích hoạt CI (dùng `BOT_PAT`).
-
-3) Giao task không cần Codespaces
-- Telegram Bot theo lịch:
-	- Workflow: `.github/workflows/telegram-tasks.yml` (cron mỗi 5 phút + hỗ trợ `workflow_dispatch`).
-	- Script: `scripts/telegram-tasks.js` (Node 20, dùng fetch API).
-	- Lệnh hỗ trợ trong Telegram: `/help`, `/backlog <title> | <desc>`, `/ci <branch|main>`, `/status`.
-	- Cơ chế: Tạo nhánh `ui-ux/task-*`, ghi `BACKLOG.md`, push bằng `BOT_PAT`; Auto‑PR mở PR và auto‑merge khi CI xanh.
-	- Lưu ý: Workflow theo lịch chỉ hoạt động sau khi file nằm trên nhánh mặc định (`main`). PR hiện tại auto‑merge xong sẽ kích hoạt lịch.
-- Slash commands trong PR:
-	- Workflow: `.github/workflows/commands.yml` (lắng nghe `issue_comment: created`).
-	- Lệnh: `/help`, `/backlog <title> | <desc>`, `/ci <branch|main>`, `/status`.
-	- Dùng được ngay khi comment trong PR thuộc repo (không cần Telegram/secrets mới).
-
-### Cách dùng sau khi PR merge vào main
-- Trên Telegram:
-	- Giao task: `/backlog Redesign Services page | Match new hero style`
-	- Kích hoạt CI: `/ci main`
-	- Xem trạng thái CI: `/status`
-- Trong PR (comment):
-	- `/backlog Add KPI cards | 3 variants`
-	- `/ci ui-ux/modern-hero-and-animations`
-	- `/status`
-
-### Điều kiện/Secrets
-- Cần có: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `BOT_PAT` (đã cấu hình trước đó).
-- Bot chỉ xử lý tin nhắn từ `TELEGRAM_CHAT_ID` đã đặt (có thể là group ID nếu dùng nhóm).
-
-### Việc còn lại/Next steps ngắn
-- [ ] Smoke test Telegram bot sau khi PR merge vào `main` (do giới hạn workflow theo lịch trên default branch).
-- [ ] (Tuỳ chọn) Giảm cron xuống `*/2 * * * *` nếu muốn phản hồi nhanh hơn.
-- [ ] Mở rộng UI/UX cho toàn site: typography system, component library (Button/Card/Modal), micro‑interactions.
-
-### Bổ sung vào Update Log
-- 15/09/2025 09:06 — Thêm workflows: commands (PR slash), telegram-tasks (cron), auto-rerun CI, auto-rebase, notify-telegram, bot-commit; nâng cấp ci.yml; cập nhật auto-fix.
-- 15/09/2025 09:08 — Cập nhật UI/UX Home (hero nâng cấp, animations), bổ sung Tailwind keyframes và CSS utilities; sửa lỗi JSX gây hỏng CI.
-- 15/09/2025 09:10 — Bật auto‑PR và auto‑merge cho nhánh UI/UX; cấu hình thông báo Telegram chi tiết (PR title + changed files).
-
-
-### 🚦 CI/CD Auto-Review
-
-- Khi có PR, workflow CI sẽ tự động build, test, chạy Lighthouse (lhci) và kiểm tra accessibility (axe-core) trên bản preview.
-- Kết quả Lighthouse và a11y sẽ được upload artifact và sticky comment vào PR, kèm link preview Pages.
-- Giúp reviewer kiểm tra nhanh chất lượng UI/UX, hiệu năng, accessibility trước khi merge.
+## 4. Update Log
+- 2025-09-15: Chuyển hướng dự án sang website forwarder, update toàn bộ content, UI/UX, blog/news, admin dashboard.
