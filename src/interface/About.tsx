@@ -34,7 +34,7 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <Container>
           <div className="relative z-10">
@@ -42,16 +42,16 @@ export default function About() {
               <div>
                 <h1 className="text-5xl md:text-6xl font-black mb-6">
                   Về Chúng Tôi
-                  <span className="block text-orange-200 text-4xl md:text-5xl mt-2">
+                  <span className="block text-accent-200 text-4xl md:text-5xl mt-2">
                     Iconic Logistics
                   </span>
                 </h1>
-                <p className="text-xl md:text-2xl text-orange-100 leading-relaxed mb-8">
+                <p className="text-xl md:text-2xl text-primary-100 leading-relaxed mb-8">
                   Đơn vị tiên phong trong lĩnh vực logistics tại Việt Nam với hơn 10 năm kinh
                   nghiệm, cung cấp giải pháp toàn diện từ vận chuyển đến quản lý chuỗi cung ứng.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-white text-orange-500 px-8 py-4 rounded-xl font-semibold hover:bg-orange-50 transition-colors">
+                  <button className="bg-white text-primary-500 px-8 py-4 rounded-xl font-semibold hover:bg-primary-50 transition-colors">
                     🤝 Hợp tác cùng chúng tôi
                   </button>
                 </div>
@@ -65,8 +65,8 @@ export default function About() {
                 />
                 <div className="absolute -bottom-4 -right-4 bg-white rounded-xl p-4 shadow-xl">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-orange-500">10+</div>
-                    <div className="text-sm text-gray-600">Năm kinh nghiệm</div>
+                    <div className="text-2xl font-bold text-primary-500">10+</div>
+                    <div className="text-sm text-neutral-600">Năm kinh nghiệm</div>
                   </div>
                 </div>
               </div>
@@ -81,10 +81,10 @@ export default function About() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-black text-orange-500 mb-2">
+                <div className="text-4xl md:text-5xl font-black text-primary-500 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-neutral-600 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -92,14 +92,14 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-neutral-50">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-8">
               <div className="bg-white rounded-2xl p-8 shadow-logistics-card hover:shadow-logistics-card border border-gray-100">
                 <div className="text-4xl mb-4">🎯</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Sứ mệnh</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <h3 className="text-2xl font-bold text-neutral-900 mb-4">Sứ mệnh</h3>
+                <p className="text-neutral-600 leading-relaxed">
                   Tối ưu hóa chuỗi cung ứng, nâng cao hiệu suất vận hành và trải nghiệm khách hàng
                   cho doanh nghiệp Việt Nam thông qua các giải pháp logistics thông minh và đáng tin
                   cậy.
@@ -107,8 +107,8 @@ export default function About() {
               </div>
               <div className="bg-white rounded-2xl p-8 shadow-logistics-card hover:shadow-logistics-card border border-gray-100">
                 <div className="text-4xl mb-4">🚀</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Tầm nhìn</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <h3 className="text-2xl font-bold text-neutral-900 mb-4">Tầm nhìn</h3>
+                <p className="text-neutral-600 leading-relaxed">
                   Trở thành đối tác logistics tin cậy hàng đầu khu vực Đông Nam Á, dẫn dắt xu hướng
                   chuyển đổi số trong ngành logistics Việt Nam.
                 </p>
@@ -136,8 +136,8 @@ export default function About() {
       <section className="py-20 bg-white">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Giá Trị Cốt Lõi</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-neutral-900 mb-4">Giá Trị Cốt Lõi</h2>
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Những giá trị định hướng mọi hoạt động của Iconic Logistics
             </p>
           </div>
@@ -146,12 +146,12 @@ export default function About() {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="group text-center p-8 bg-gray-50 rounded-2xl hover:bg-orange-50 transition-all duration-300 hover:-translate-y-2"
+                className="group text-center p-8 bg-neutral-50 rounded-2xl hover:bg-accent-50 transition-all duration-300 hover:-translate-y-2 shadow-logistics-card hover:shadow-logistics-card-hover"
               >
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-500 transition-colors">
+                <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary-500 transition-colors">
                   {value.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">{value.desc}</p>
