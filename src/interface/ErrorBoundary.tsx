@@ -1,18 +1,18 @@
 import React from 'react';
 
-export class ErrorBoundary extends React.Component<
-  { children: React.ReactNode },
-  { hasError: boolean; error: any }
-> {
-  constructor(props: any) {
+type ErrorBoundaryProps = { children: React.ReactNode };
+type ErrorBoundaryState = { hasError: boolean; error: Error | null };
+export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false, error: null };
   }
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError(error: Error) {
     return { hasError: true, error };
   }
-  componentDidCatch(error: any, info: any) {
-    // log error if needed
+  // eslint-disable-next-line class-methods-use-this
+  componentDidCatch(/* error: Error, info: React.ErrorInfo */) {
+    // Optionally log error
   }
   render() {
     if (this.state.hasError) {

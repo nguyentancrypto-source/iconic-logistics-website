@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Button } from './ui';
+import { vi } from 'vitest';
 
 describe('Button', () => {
   it('renders children', () => {
