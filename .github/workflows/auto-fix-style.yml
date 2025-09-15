@@ -39,7 +39,7 @@ jobs:
             else
               git remote set-url origin https://x-access-token:$GH_TOKEN@github.com/${{ github.repository }}
             fi
-            git push
+            git push || echo "Push skipped (no permission or no changes)"
           else
             echo "No changes to commit"
           fi

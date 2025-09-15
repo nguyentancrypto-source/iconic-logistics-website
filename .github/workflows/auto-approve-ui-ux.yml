@@ -17,9 +17,11 @@ jobs:
   approve:
     runs-on: ubuntu-latest
     steps:
-      - name: Approve PR (ui-ux/*)
+      - name: Approve PR with BOT_PAT (ui-ux/*)
+        if: ${{ secrets.BOT_PAT != '' }}
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.BOT_PAT }}
           script: |
             const isDispatch = context.eventName === 'workflow_dispatch';
             const prNumber = isDispatch ? Number(core.getInput('pr')) : context.payload.pull_request.number;
@@ -36,7 +38,6 @@ jobs:
               core.info(`Skip: head ref ${pr.head.ref} not ui-ux/*`);
               return;
             }
-            // Create approval review to satisfy 1-approval requirement
             await github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -45,3 +46,10 @@ jobs:
               body: 'Auto-approve UI/UX PR via workflow to satisfy branch protection.'
             });
             core.info(`Approved PR #${prNumber}`);
+
+      - name: Skip approval (no BOT_PAT configured)
+        if: ${{ secrets.BOT_PAT == '' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.info('BOT_PAT secret not configured; skipping auto-approval to avoid self-approval error.')

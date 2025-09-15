@@ -251,3 +251,11 @@
 - ✅ DevOps: 90% complete
 
 **Next Milestone:** Complete frontend UI/UX and add advanced features (Target: End of sprint)
+
+---
+
+## ⏱️ Immediate (Today)
+
+- [ ] Approve PR #60 (one-time) to resolve GitHub self-approval restriction for `app/github-actions`.
+- [ ] Wait for auto-merge and verify Telegram "PR merged" message shows totals, top commits, and links.
+- [ ] After merge: confirm new auto-approve workflow on `main` uses `BOT_PAT` (no further manual approvals needed).
