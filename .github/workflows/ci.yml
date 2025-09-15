@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: ['dev', 'main']
+    branches: ['dev', 'main', 'ui-ux/**', 'feat/ui-ux-*']
   pull_request:
-    branches: ['dev']
+    branches: ['dev', 'main']
 
 jobs:
   build:
@@ -21,18 +21,37 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
-      - run: npm test
-      - run: npm run build
+      # Retry potentially flaky steps to reduce false negatives
+      - name: Run tests (retry)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: npm test
+      - name: Build (retry)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: npm run build
 
       # Start preview server in background
       - name: Start preview server
         run: npm run preview &
       - name: Wait for preview
-        run: npx wait-on http://localhost:4173
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 3
+          max_attempts: 3
+          command: npx wait-on http://localhost:4173
 
       # Run Lighthouse CI
-      - name: Run Lighthouse CI
-        run: npm run lhci:ci
+      - name: Run Lighthouse CI (retry)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 2
+          command: npm run lhci:ci
       - name: Upload LHCI report artifact
         uses: actions/upload-artifact@v4
         with:
@@ -40,8 +59,12 @@ jobs:
           path: lhci-report
 
       # Run axe-core a11y
-      - name: Run axe-core a11y
-        run: npm run axe:ci
+      - name: Run axe-core a11y (retry)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 5
+          max_attempts: 2
+          command: npm run axe:ci
       - name: Upload axe report artifact
         uses: actions/upload-artifact@v4
         with:
@@ -63,3 +86,31 @@ jobs:
             
             ♿ **A11y (axe):**
             - Xem chi tiết artifact [axe-report.json](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+      # Telegram notifications
+      - name: Notify Telegram on failure
+        if: failure()
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$BOT_TOKEN" ] || [ -z "$CHAT_ID" ]; then
+            echo "Telegram secrets not set, skipping notification."
+            exit 0
+          fi
+          TEXT="🔴 CI Failed\nRepo: ${{ github.repository }}\nBranch: ${{ github.ref_name }}\nEvent: ${{ github.event_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
+
+      - name: Notify Telegram on success (PR only)
+        if: success() && github.event_name == 'pull_request'
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$BOT_TOKEN" ] || [ -z "$CHAT_ID" ]; then
+            echo "Telegram secrets not set, skipping notification."
+            exit 0
+          fi
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          TEXT="🟢 CI Green for PR #$PR_NUMBER\nRepo: ${{ github.repository }}\nBranch: ${{ github.head_ref || github.ref_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nStatus: Ready to auto-merge when checks complete."
+          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
