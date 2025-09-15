@@ -9,14 +9,17 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
-      - name: Collect merged PR files
-        id: files
+      - name: Collect merged PR details
+        id: details
         uses: actions/github-script@v7
         with:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const number = context.payload.pull_request.number;
+            // Fetch PR for totals
+            const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: number });
+            const totals = `${pr.changed_files} files, +${pr.additions}/-${pr.deletions}`;
             let files = [];
             const per_page = 100;
             for (let page = 1; page <= 10; page++) {
@@ -26,7 +29,22 @@ jobs:
             }
             const top = files.slice(0, 10).map(f => `- ${f.filename} (+${f.additions}/-${f.deletions})`).join('\n');
             const more = files.length > 10 ? `\n… and ${files.length - 10} more files` : '';
+            // Collect commits (top 5)
+            let commits = [];
+            for (let page = 1; page <= 10; page++) {
+              const res = await github.rest.pulls.listCommits({ owner, repo, pull_number: number, per_page, page });
+              commits = commits.concat(res.data);
+              if (res.data.length < per_page) break;
+            }
+            const commitLines = commits.slice(0, 5).map(c => {
+              const sha = c.sha.substring(0,7);
+              const msg = (c.commit && c.commit.message ? c.commit.message.split('\n')[0] : '').slice(0, 120);
+              const who = (c.commit && c.commit.author && c.commit.author.name) ? c.commit.author.name : (c.author && c.author.login) ? c.author.login : 'unknown';
+              return `• ${sha} ${msg} (${who})`;
+            }).join('\n');
             core.setOutput('files', top + more);
+            core.setOutput('totals', totals);
+            core.setOutput('commits', commitLines);
       - name: Send Telegram message (PR merged)
         env:
           BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -36,6 +54,10 @@ jobs:
             echo "Telegram secrets not set, skipping notification."
             exit 0
           fi
-          FILES=$(echo "${{ steps.files.outputs.files }}")
-          TEXT="🟢 PR merged to main\nRepo: ${{ github.repository }}\nPR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}\nBranch: ${{ github.event.pull_request.head.ref }} → main\nActor: ${{ github.actor }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nChanges:\n$FILES"
+          FILES=$(echo "${{ steps.details.outputs.files }}")
+          COMMITS=$(echo "${{ steps.details.outputs.commits }}")
+          TOTALS=$(echo "${{ steps.details.outputs.totals }}")
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          DIFF_URL="${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.pull_request.number }}/files"
+          TEXT="🟢 PR merged to main\nRepo: ${{ github.repository }}\nPR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}\nBranch: ${{ github.event.pull_request.head.ref }} → main\nActor: ${{ github.actor }}\nTotals: $TOTALS\n\nCommits (top 5):\n$COMMITS\n\nChanges (top 10 files):\n$FILES\n\nLinks:\nPR: $PR_URL\nDiff: $DIFF_URL\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
