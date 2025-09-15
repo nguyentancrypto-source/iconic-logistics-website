@@ -1,0 +1,57 @@
+name: UI/UX Auto PR and Auto-merge
+
+on:
+  push:
+    branches:
+      - 'ui-ux/**'
+      - 'feat/ui-ux-*'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-pr-and-automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create or reuse PR into main
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const head = context.ref.replace('refs/heads/','');
+            const title = `UI/UX: ${head}`;
+            const body = `Automated PR for UI/UX improvements from branch ${head}.\n\nThis PR was created automatically to comply with repository rules requiring PRs. It will be auto-merged (squash) once all checks pass.`;
+
+            const { data: existing } = await github.rest.pulls.list({ owner, repo, head: `${owner}:${head}`, state: 'open' });
+            let pr;
+            if (existing.length > 0) {
+              pr = existing[0];
+            } else {
+              pr = (await github.rest.pulls.create({ owner, repo, head, base: 'main', title, body })).data;
+            }
+
+            core.setOutput('number', pr.number.toString());
+
+      - name: Label PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: Number('${{ steps.pr.outputs.number }}'),
+              labels: ['ui-ux', 'automerge']
+            });
+
+      - name: Enable auto-merge (squash)
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.pr.outputs.number }}
+          merge-method: squash
