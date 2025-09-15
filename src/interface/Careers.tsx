@@ -100,24 +100,24 @@ export default function Careers() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <Container>
           <div className="relative z-10 text-center">
             <h1 className="text-5xl md:text-6xl font-black mb-6">
               Tuyển Dụng
-              <span className="block text-orange-200 text-4xl md:text-5xl mt-2">Nhân Tài</span>
+              <span className="block text-accent-200 text-4xl md:text-5xl mt-2">Nhân Tài</span>
             </h1>
-            <p className="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto leading-relaxed mb-8">
               Gia nhập đội ngũ Iconic Logistics - Nơi tài năng được tỏa sáng và phát triển không
               giới hạn
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-orange-500 px-8 py-4 rounded-xl font-semibold hover:bg-orange-50 transition-colors">
-                📄 Xem tất cả vị trí
+              <button className="bg-white text-primary-500 px-8 py-4 rounded-xl font-semibold hover:bg-primary-50 transition-colors">
+                📧 Gửi CV ngay
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-500 transition-colors">
-                📧 Gửi CV tự do
+              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-primary-500 transition-colors">
+                📄 Xem tất cả vị trí
               </button>
             </div>
           </div>
@@ -125,11 +125,11 @@ export default function Careers() {
       </section>
 
       {/* Job Openings */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-neutral-50">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Vị Trí Đang Tuyển</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-neutral-900 mb-4">Vị Trí Đang Tuyển</h2>
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Cơ hội nghề nghiệp hấp dẫn tại Iconic Logistics
             </p>
           </div>
@@ -144,27 +144,27 @@ export default function Careers() {
                   <div className="flex items-center gap-4">
                     <div className="text-4xl">{job.icon}</div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-orange-500 transition-colors">
+                      <h3 className="text-xl font-bold text-neutral-900 group-hover:text-primary-500 transition-colors">
                         {job.title}
                       </h3>
-                      <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
+                      <div className="flex items-center gap-4 text-sm text-neutral-600 mt-1">
                         <span>📍 {job.location}</span>
                         <span>⏰ {job.type}</span>
-                        <span className="text-orange-500 font-semibold">💰 {job.salary}</span>
+                        <span className="text-primary-500 font-semibold">💰 {job.salary}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-gray-600 mb-4 leading-relaxed">{job.desc}</p>
+                <p className="text-neutral-600 mb-4 leading-relaxed">{job.desc}</p>
 
                 <div className="space-y-3 mb-6">
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Yêu cầu:</h4>
+                    <h4 className="font-semibold text-neutral-900 mb-2">Yêu cầu:</h4>
                     <ul className="space-y-1">
                       {job.requirements.map((req: string, idx: number) => (
-                        <li key={idx} className="flex items-center text-sm text-gray-700">
-                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 flex-shrink-0"></div>
+                        <li key={idx} className="flex items-center text-sm text-neutral-700">
+                          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 flex-shrink-0"></div>
                           {req}
                         </li>
                       ))}
@@ -172,10 +172,10 @@ export default function Careers() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Quyền lợi:</h4>
+                    <h4 className="font-semibold text-neutral-900 mb-2">Quyền lợi:</h4>
                     <ul className="space-y-1">
                       {job.benefits.map((benefit: string, idx: number) => (
-                        <li key={idx} className="flex items-center text-sm text-gray-700">
+                        <li key={idx} className="flex items-center text-sm text-neutral-700">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
                           {benefit}
                         </li>
@@ -197,10 +197,10 @@ export default function Careers() {
       <section className="py-20 bg-white">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-neutral-900 mb-4">
               Tại Sao Chọn Iconic Logistics?
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
               Chúng tôi không chỉ cung cấp công việc, mà còn xây dựng sự nghiệp bền vững
             </p>
           </div>
@@ -209,11 +209,11 @@ export default function Careers() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-orange-50 transition-all duration-300 hover:-translate-y-2"
+                className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-primary-50 transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="text-5xl mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
+                <h3 className="text-xl font-bold text-neutral-900 mb-3">{benefit.title}</h3>
+                <p className="text-neutral-600 leading-relaxed">{benefit.desc}</p>
               </div>
             ))}
           </div>
@@ -225,25 +225,25 @@ export default function Careers() {
         <Container>
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">Sẵn sàng gia nhập đội ngũ?</h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
               Gửi CV của bạn ngay hôm nay và bắt đầu hành trình phát triển sự nghiệp cùng Iconic
               Logistics
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto text-left">
               <div className="bg-gray-800 rounded-xl p-6">
                 <h3 className="font-bold mb-2">📧 Gửi CV qua Email</h3>
-                <p className="text-gray-300 text-sm mb-3">Gửi CV và thư xin việc tới</p>
-                <p className="text-orange-400 font-semibold">hr@iconiclogistics.vn</p>
+                <p className="text-neutral-300 text-sm mb-3">Gửi CV và thư xin việc tới</p>
+                <p className="text-primary-400 font-semibold">hr@iconiclogistics.vn</p>
               </div>
               <div className="bg-gray-800 rounded-xl p-6">
                 <h3 className="font-bold mb-2">📞 Liên hệ trực tiếp</h3>
-                <p className="text-gray-300 text-sm mb-3">Hotline tuyển dụng</p>
-                <p className="text-orange-400 font-semibold">1900-ICONIC</p>
+                <p className="text-neutral-300 text-sm mb-3">Hotline tuyển dụng</p>
+                <p className="text-primary-400 font-semibold">1900-ICONIC</p>
               </div>
             </div>
             <div className="mt-8">
               <button className="btn-primary mr-4">📄 Ứng tuyển online</button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-neutral-900 transition-colors">
                 📋 Tải mẫu CV
               </button>
             </div>
