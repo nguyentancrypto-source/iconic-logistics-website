@@ -1,9 +1,25 @@
 # 📋 BACKLOG - Iconic Logistics Website
 
+## 🚨 URGENT - Missing Telegram Notification Analysis
+
+**ISSUE:** PR #60 successfully merged at 13:03:54Z but Telegram notification never triggered
+
+**ROOT CAUSE FOUND:**
+- Workflow `notify-telegram.yml` uses `pull_request.closed` event
+- Squash merge doesn't reliably trigger this webhook event
+- No workflow run found in GitHub Actions history for the merge
+
+**CURRENT FIX:** PR #61 - Added `workflow_dispatch` trigger for manual notifications
+- Can manually send notification: `gh workflow run notify-telegram.yml --ref main -f pr_number=60`
+- Provides fallback for future missed notifications
+
+---
+
 ## 🎯 Project Status Overview
 
 - **Start Date:** September 14, 2025
-- **Curren- [x] Core pages completed with basic content** Foundation & Backend Implementa- **Next Milestone:** MVP with full-stack functionality
+- **Current Phase:** CI/CD automation debugging
+- **Next Milestone:** MVP with full-stack functionality
 
 ---
 
