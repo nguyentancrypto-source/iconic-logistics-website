@@ -5,6 +5,12 @@ on:
     branches: ['dev', 'main', 'ui-ux/**', 'feat/ui-ux-*']
   pull_request:
     branches: ['dev', 'main']
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: "Branch to run CI against (optional)"
+        required: false
+        default: ""
 
 jobs:
   build:

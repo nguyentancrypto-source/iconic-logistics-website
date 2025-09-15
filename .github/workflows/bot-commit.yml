@@ -1,0 +1,54 @@
+name: Bot Commit (no local commands)
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: Commit message
+        required: false
+        default: "chore(bot): trigger CI"
+      file:
+        description: File to touch (safe small file)
+        required: false
+        default: ".prettierrc"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.BOT_PAT || secrets.GITHUB_TOKEN }}
+          ref: ${{ github.ref_name }}
+      - name: Make a tiny change
+        run: |
+          FILE="${{ inputs.file }}"
+          MSG="${{ inputs.message }}"
+          date +%s > .bot-touch
+          if [ "$FILE" != ".bot-touch" ]; then
+            echo "// bot-touch $(date -u +%FT%TZ)" >> "$FILE" || true
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "$MSG" || echo "No changes to commit"
+      - name: Push changes
+        env:
+          BOT_PAT: ${{ secrets.BOT_PAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --cached --quiet; then
+            echo "Nothing to push"
+            exit 0
+          fi
+          if [ -n "$BOT_PAT" ]; then
+            git remote set-url origin https://x-access-token:$BOT_PAT@github.com/${{ github.repository }}
+          else
+            git remote set-url origin https://x-access-token:$GH_TOKEN@github.com/${{ github.repository }}
+          fi
+          git push origin HEAD:${{ github.ref_name }}
