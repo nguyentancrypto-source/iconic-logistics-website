@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Rebase PR onto main
         if: github.event_name == 'pull_request'
-        uses: cirrus-actions/rebase@v1
+        uses: cirrus-actions/rebase@1.12
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Find open UI/UX PRs and trigger rebase
