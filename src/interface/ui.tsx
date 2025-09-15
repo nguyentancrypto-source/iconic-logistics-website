@@ -35,7 +35,7 @@ export function Button({
       {...props}
     >
       {leftIcon && <span className="mr-1">{leftIcon}</span>}
-      {loading ? <span className="animate-spin mr-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span> : null}
+      {loading ? <span aria-label="loading" className="animate-spin mr-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span> : null}
       {children}
       {rightIcon && <span className="ml-1">{rightIcon}</span>}
     </button>

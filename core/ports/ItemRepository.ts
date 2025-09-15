@@ -15,7 +15,9 @@ export type PagedResult<T> = {
   pageSize: number;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export interface ItemRepository {
   list(query: ItemQuery): Promise<PagedResult<Item>>;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   findById(id: string): Promise<Item | null>;
 }

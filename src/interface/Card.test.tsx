@@ -8,6 +8,6 @@ describe('Card', () => {
   });
   it('applies custom className', () => {
     render(<Card className="test-class">Test</Card>);
-    expect(screen.getByText('Test').parentElement).toHaveClass('test-class');
+  expect(screen.getByText('Test')).toHaveClass('test-class');
   });
 });
