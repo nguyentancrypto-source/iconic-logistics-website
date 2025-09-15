@@ -128,8 +128,20 @@ jobs:
             exit 0
           fi
           PR_NUMBER=${{ github.event.pull_request.number }}
-          TEXT="🔴 CI Failed (final attempt) for PR #$PR_NUMBER\nRepo: ${{ github.repository }}\nBranch: ${{ github.head_ref || github.ref_name }}\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nNote: Auto-retried and still failing."
-          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
+          
+          TEXT="🔴 *CI thất bại (lần cuối)*"$'\n\n'
+          TEXT+="⚠️ *Cảnh báo:* PR #$PR_NUMBER đã retry nhiều lần nhưng vẫn fail"$'\n\n'
+          TEXT+="📦 *Thông tin:*"$'\n'
+          TEXT+="• Repo: \`${{ github.repository }}\`"$'\n'
+          TEXT+="• Branch: \`${{ github.head_ref || github.ref_name }}\`"$'\n'
+          TEXT+="• PR: #$PR_NUMBER"$'\n\n'
+          TEXT+="🔧 *Cần kiểm tra:*"$'\n'
+          TEXT+="• Code có lỗi syntax"$'\n'
+          TEXT+="• Tests không pass"$'\n'
+          TEXT+="• Build errors"$'\n\n'
+          TEXT+="🔗 [Xem workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          
+          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" --data-urlencode "parse_mode=Markdown" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 
       - name: Notify Telegram on success (PR only)
         if: success() && github.event_name == 'pull_request'
@@ -145,5 +157,17 @@ jobs:
           PR_TITLE="${{ steps.changed.outputs.title }}"
           PR_URL="${{ steps.changed.outputs.url }}"
           FILES=$(echo "${{ steps.changed.outputs.files }}")
-          TEXT="🟢 CI Green for PR #$PR_NUMBER — $PR_TITLE\nRepo: ${{ github.repository }}\nBranch: ${{ github.head_ref || github.ref_name }}\nPR: $PR_URL\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\nChanges:\n$FILES\nStatus: Ready to auto-merge when checks complete."
-          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
+          
+          TEXT="✅ *CI thành công!*"$'\n\n'
+          TEXT+="📦 *Thông tin PR:*"$'\n'
+          TEXT+="• Repo: \`${{ github.repository }}\`"$'\n'
+          TEXT+="• PR #$PR_NUMBER: $PR_TITLE"$'\n'
+          TEXT+="• Branch: \`${{ github.head_ref || github.ref_name }}\`"$'\n\n'
+          TEXT+="📄 *Files thay đổi:*"$'\n'
+          TEXT+="$FILES"$'\n\n'
+          TEXT+="🚀 *Trạng thái:* Sẵn sàng auto-merge khi tất cả checks hoàn thành"$'\n\n'
+          TEXT+="🔗 *Liên kết:*"$'\n'
+          TEXT+="• [Xem PR]($PR_URL)"$'\n'
+          TEXT+="• [Workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          
+          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" --data-urlencode "parse_mode=Markdown" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"

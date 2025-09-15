@@ -67,5 +67,21 @@ jobs:
           TOTALS=$(echo "${{ steps.details.outputs.totals }}")
           PR_URL="${{ github.event.pull_request.html_url }}"
           DIFF_URL="${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.pull_request.number }}/files"
-          TEXT="🟢 PR merged to main\nRepo: ${{ github.repository }}\nPR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}\nBranch: ${{ github.event.pull_request.head.ref }} → main\nActor: ${{ github.actor }}\nTotals: $TOTALS\n\nCommits (top 5):\n$COMMITS\n\nChanges (top 10 files):\n$FILES\n\nLinks:\nPR: $PR_URL\nDiff: $DIFF_URL\nRun: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
+          
+          TEXT="🎉 *PR đã merge thành công!*"$'\n\n'
+          TEXT+="📦 *Thông tin PR:*"$'\n'
+          TEXT+="• Repo: \`${{ github.repository }}\`"$'\n'
+          TEXT+="• PR #${{ github.event.pull_request.number }}: ${{ github.event.pull_request.title }}"$'\n'
+          TEXT+="• Branch: \`${{ github.event.pull_request.head.ref }}\` → \`main\`"$'\n'
+          TEXT+="• Người thực hiện: @${{ github.actor }}"$'\n'
+          TEXT+="• Thống kê: $TOTALS"$'\n\n'
+          TEXT+="📝 *Commits mới nhất:*"$'\n'
+          TEXT+="$COMMITS"$'\n\n'
+          TEXT+="📄 *Files thay đổi:*"$'\n'
+          TEXT+="$FILES"$'\n\n'
+          TEXT+="🔗 *Liên kết:*"$'\n'
+          TEXT+="• [Xem PR]($PR_URL)"$'\n'
+          TEXT+="• [Xem thay đổi]($DIFF_URL)"$'\n'
+          TEXT+="• [Workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          
+          curl -s --data-urlencode "chat_id=$CHAT_ID" --data-urlencode "text=$TEXT" --data-urlencode "parse_mode=Markdown" "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
