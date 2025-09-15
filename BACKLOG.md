@@ -17,10 +17,15 @@
    - Root cause: Using non-existent `cirrus-actions/rebase@v1`
    - Solution: Updated to stable version `@1.12` (PR #63)
 
+4. **Telegram Messages Format** ✅
+   - Issue: Messages tiếng Anh, format đơn giản, khó đọc
+   - Solution: Chuyển sang tiếng Việt, thêm emoji, format markdown đẹp (PR #64)
+
 **CURRENT STATUS:**
-- All CI/CD workflows now functional on main branch
-- Manual Telegram notification available: `gh workflow run notify-telegram.yml --ref main -f pr_number=60`
-- Future PRs should have full automation working
+- ✅ All CI/CD workflows functional với Telegram notifications tiếng Việt
+- ✅ Messages format đẹp với emoji, markdown, thông tin chi tiết
+- ✅ Manual Telegram notification available: `gh workflow run notify-telegram.yml --ref main -f pr_number=60`
+- ✅ Future PRs sẽ có full automation với notifications đẹp
 
 ---
 
