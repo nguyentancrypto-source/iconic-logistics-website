@@ -1,0 +1,114 @@
+name: PR Comment Commands
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  handle-command:
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout base repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Parse and run command
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.comment.body.trim();
+            const prNumber = context.payload.issue.number;
+
+            function parseCommand(text) {
+              const space = text.indexOf(' ');
+              const cmd = (space === -1 ? text : text.slice(0, space)).toLowerCase();
+              const rest = space === -1 ? '' : text.slice(space + 1);
+              return { cmd, rest };
+            }
+
+            function slugify(s) {
+              return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '').substring(0, 40);
+            }
+
+            const { cmd, rest } = parseCommand(body);
+            core.info(`Command: ${cmd}, args: ${rest}`);
+
+            async function comment(msg) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: msg,
+              });
+            }
+
+            if (cmd === '/help') {
+              await comment('Commands:\n- /backlog <title> | <desc> — create a ui-ux/task-* branch from main and let auto-PR+CI run\n- /ci <branch|main> — dispatch CI workflow\n- /status — show recent CI runs');
+              return;
+            }
+
+            if (cmd === '/backlog') {
+              const [title, desc] = rest.split('|');
+              if (!title || !title.trim()) {
+                await comment('❌ Title required. Usage: /backlog <title> | <desc>');
+                return;
+              }
+              const branch = `ui-ux/task-${slugify(title.trim())}`;
+
+              // Create branch and update BACKLOG.md
+              const { execSync } = require('node:child_process');
+              const fs = require('node:fs');
+              const run = (c) => { core.info(`$ ${c}`); return execSync(c, { stdio: 'pipe' }).toString(); };
+
+              run('git config user.name "iconic-bot"');
+              run('git config user.email "bot@users.noreply.github.com"');
+              run('git fetch origin --prune');
+              run('git checkout -B main origin/main');
+              run(`git checkout -B ${branch} origin/main`);
+
+              const file = 'BACKLOG.md';
+              let content = '';
+              try { content = fs.readFileSync(file, 'utf8'); } catch { content = '# Backlog\n\n'; }
+              const stamp = new Date().toISOString().replace('T',' ').replace('Z',' UTC');
+              const lines = [`- [ ] ${title.trim()} — via PR comment (${stamp})`];
+              if (desc && desc.trim()) lines.push(`  - ${desc.trim()}`);
+              fs.writeFileSync(file, content + lines.join('\n') + '\n', 'utf8');
+
+              run('git add BACKLOG.md');
+              run(`git commit -m ${JSON.stringify(`docs(backlog): add task ${title.trim()} via PR comment`)}`);
+              run(`git push -u origin ${branch}`);
+
+              await comment(`✅ Created branch \`${branch}\`. Auto PR workflow will open PR to \`main\` and auto-merge when CI is green.`);
+              return;
+            }
+
+            if (cmd === '/ci') {
+              const ref = (rest && rest.trim()) || 'main';
+              await github.request('POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches', {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: 'ci.yml',
+                ref,
+              });
+              await comment(`🚀 CI dispatched for \`${ref}\`.`);
+              return;
+            }
+
+            if (cmd === '/status') {
+              const resp = await github.request('GET /repos/{owner}/{repo}/actions/runs', {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                per_page: 5,
+              });
+              const runs = resp.data.workflow_runs.slice(0,5).map(r => `• #${r.run_number} ${r.name} — ${r.status}/${r.conclusion || 'n/a'} — ${r.head_branch}`);
+              await comment(`Recent CI runs:\n${runs.join('\n')}`);
+              return;
+            }
+
+            await comment('Unknown command. Try /help');

@@ -1,0 +1,53 @@
+name: Telegram Tasks Bot
+
+on:
+  schedule:
+    - cron: "*/5 * * * *" # every 5 minutes
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        description: "Run without writing changes (true/false)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Export secrets to env
+        shell: bash
+        run: |
+          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> $GITHUB_ENV
+          echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> $GITHUB_ENV
+          echo "BOT_PAT=${{ secrets.BOT_PAT }}" >> $GITHUB_ENV
+          echo "DRY_RUN=${{ github.event.inputs.dryRun || 'false' }}" >> $GITHUB_ENV
+
+      - name: Validate configuration
+        shell: bash
+        run: |
+          test -n "$TELEGRAM_BOT_TOKEN" || { echo "Missing TELEGRAM_BOT_TOKEN"; exit 0; }
+          test -n "$TELEGRAM_CHAT_ID" || { echo "Missing TELEGRAM_CHAT_ID"; exit 0; }
+          test -n "$BOT_PAT" || { echo "Missing BOT_PAT"; exit 0; }
+
+      - name: Run Telegram Task Bot
+        run: |
+          node scripts/telegram-tasks.js
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "Telegram tasks bot run completed." >> $GITHUB_STEP_SUMMARY
