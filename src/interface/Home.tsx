@@ -34,7 +34,7 @@ export default function Home() {
               {/* Subtitle badge */}
               <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-accent-300 font-medium animate-fadeInUp">
                 <span className="w-2 h-2 bg-primary-400 rounded-full mr-2 animate-pulse"></span>
-                Logistics Technology Leader
+                Giải pháp Forwarder & Xuất Nhập Khẩu
               </div>
 
               {/* Main heading */}
@@ -42,23 +42,19 @@ export default function Home() {
                 className="text-6xl lg:text-8xl font-black leading-tight animate-fadeInUp"
                 style={{ animationDelay: '0.2s' }}
               >
-                <span className="block text-white mb-2">Future of</span>
+                <span className="block text-white mb-2">Dịch vụ</span>
                 <span className="block bg-gradient-to-r from-primary-400 via-accent-400 to-secondary-500 bg-clip-text text-transparent animate-gradient-x">
-                  Logistics
+                  Forwarder Quốc Tế
                 </span>
-                <span className="block text-secondary-300 text-5xl lg:text-6xl mt-4">Made Simple</span>
+                <span className="block text-secondary-300 text-5xl lg:text-6xl mt-4">Tối Ưu Cho Doanh Nghiệp</span>
               </h1>
 
               {/* Description */}
               <p
-                className="text-xl text-gray-300 leading-relaxed max-w-2xl animate-fadeInUp"
+                className="text-xl text-primary-100 leading-relaxed max-w-2xl animate-fadeInUp"
                 style={{ animationDelay: '0.4s' }}
               >
-                Revolutionize your supply chain with AI-powered logistics solutions.
-                <span className="text-primary-300 font-medium"> Real-time tracking</span>,
-                <span className="text-secondary-300 font-medium"> smart warehousing</span>, and
-                <span className="text-accent-300 font-medium"> predictive analytics</span> - all in
-                one platform.
+                Chuyên bán cước quốc tế, thủ tục hải quan, vận tải nội địa, kiểm dịch, CO, FYTO. Tư vấn xuất nhập khẩu trọn gói, hỗ trợ doanh nghiệp tối ưu chi phí và thời gian.
               </p>
 
               {/* CTA Buttons */}
@@ -70,13 +66,13 @@ export default function Home() {
                   <span className="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   <span className="relative flex items-center justify-center gap-2">
                     <span className="text-xl">🚀</span>
-                    Start Your Journey
+                    Nhận báo giá cước
                   </span>
                 </button>
                 <button className="group px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white font-bold rounded-2xl hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105">
                   <span className="flex items-center justify-center gap-2">
                     <span className="text-xl">💬</span>
-                    Free Consultation
+                    Tư vấn miễn phí
                   </span>
                 </button>
               </div>
@@ -87,18 +83,18 @@ export default function Home() {
                 style={{ animationDelay: '0.8s' }}
               >
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-400">1000+</div>
-                  <div className="text-sm text-neutral-400">Happy Clients</div>
+                  <div className="text-3xl font-bold text-primary-400">500+</div>
+                  <div className="text-sm text-neutral-400">Khách hàng doanh nghiệp</div>
                 </div>
                 <div className="w-px h-12 bg-neutral-600"></div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-secondary-400">99.9%</div>
-                  <div className="text-sm text-neutral-400">Uptime</div>
+                  <div className="text-sm text-neutral-400">Tỉ lệ thông quan</div>
                 </div>
                 <div className="w-px h-12 bg-neutral-600"></div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-accent-400">24/7</div>
-                  <div className="text-sm text-gray-400">Support</div>
+                  <div className="text-sm text-neutral-400">Hỗ trợ tư vấn</div>
                 </div>
               </div>
             </div>

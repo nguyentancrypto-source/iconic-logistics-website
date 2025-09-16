@@ -1,11 +1,13 @@
-# Iconic Logistics Website — Tổng Quan Dự Án (Tiếng Việt)
+# Iconic Logistics Website — Tổng Quan Dự Án (Freight Forwarder)
 
 ![CI](https://github.com/nguyentancrypto-source/iconic-logistics-website/actions/workflows/ci.yml/badge.svg)
 ![Pages](https://github.com/nguyentancrypto-source/iconic-logistics-website/actions/workflows/pages.yml/badge.svg)
 
 ## 1) Mục tiêu & Kiến trúc
 
-- Website logistics theo Clean Architecture: tách `core` (domain), `app` (use cases), `infrastructure` (Express API), `src` (frontend React).
+- Website forwarder (không phải transport): giới thiệu dịch vụ bán cước quốc tế, thủ tục hải quan, vận tải nội địa, kiểm dịch (fumigation), CO (chứng nhận xuất xứ), FYTO (kiểm dịch thực vật).
+- Tin tức ngành xuất nhập khẩu, blog chuyên sâu về logistics/forwarder.
+- Clean Architecture: tách `core` (domain), `app` (use cases), `infrastructure` (Express API), `src` (frontend React).
 - Triển khai CI/CD bằng GitHub Actions và GitHub Pages.
 
 ## 2) Công nghệ chính
@@ -17,7 +19,7 @@
 
 ## 3) Cấu trúc thư mục
 
-- `src/` — Frontend React (pages trong `src/interface/`: Home, About, Services, Contact, Careers).
+- `src/` — Frontend React (pages trong `src/interface/`: Home, About, Services, Contact, Careers, Blog, Admin).
 - `core/` — Domain entities và cổng (interfaces).
 - `app/` — Use cases.
 - `infrastructure/` — Express server, router, repository in-memory, mock data.
@@ -36,6 +38,8 @@ Các endpoints hiện có:
 ## 5) Frontend
 
 - Có thể chỉnh `VITE_API_BASE` để trỏ đến API khi deploy/đổi cổng.
+- UI/UX ưu tiên trải nghiệm chuyên nghiệp, hiện đại, tối ưu cho doanh nghiệp xuất nhập khẩu.
+- Navigation rõ ràng: Home, Dịch vụ, Blog, Liên hệ, Careers, Admin (nếu đăng nhập).
 
 ## 6) Scripts (npm)
 

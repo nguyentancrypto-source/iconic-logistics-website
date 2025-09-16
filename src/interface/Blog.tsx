@@ -72,7 +72,15 @@ const articles = [
   }
 ];
 
-const categories = ['Tất cả', 'Công nghệ', 'Kho bãi', 'Môi trường', 'Giao hàng', 'E-commerce'];
+const categories = [
+  'Tất cả',
+  'Xuất nhập khẩu',
+  'Bán cước quốc tế',
+  'Hải quan',
+  'CO & FYTO',
+  'Công nghệ logistics',
+  'Tin ngành Forwarder',
+];
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('Tất cả');
@@ -93,11 +101,10 @@ export default function Blog() {
         <Container>
           <div className="relative z-10 text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-black mb-6">
-              Tin Tức
-              <span className="block text-accent-200 text-4xl md:text-5xl mt-2">Logistics</span>
+              Blog & Tin tức Forwarder
             </h1>
             <p className="text-xl md:text-2xl text-primary-100 leading-relaxed">
-              Cập nhật xu hướng mới nhất, công nghệ tiên tiến và insights sâu sắc trong ngành logistics Việt Nam
+              Cập nhật kiến thức, xu hướng và kinh nghiệm thực tiễn về xuất nhập khẩu, bán cước quốc tế, hải quan, CO, FYTO, công nghệ logistics và thị trường Forwarder Việt Nam.
             </p>
           </div>
         </Container>
